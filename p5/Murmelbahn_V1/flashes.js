@@ -1,13 +1,12 @@
-let currentFlash = null;
+
 
 function createFlash() {
-  if (currentFlash === null) {
     flashBack = new Ball(world, 
-      {x: 3200, y: 1800, s: 6, r: 20, color: 'white'}, 
+      {x: 3200, y: 1800, s: 6, r: 20 }, 
       {frictionAir: 0.1 , isStatic: true});
   
     flashFront = new Ball(world, 
-      {x: 3100, y: 1700, s: 6, r: 20, color: 'blue', 
+      {x: 3100, y: 1700, s: 6, r: 20, color: "blue" , 
       trigger: (ball, block) => {
         //Game Over
         console.log("Flash hat Murmel getroffen")
@@ -16,11 +15,10 @@ function createFlash() {
       }}, 
       {density: 0.015, isStatic: true});
   
-    flash = flashBack.constrainTo(flashFront, { length: 100, stiffness: 1, draw: true});
+    flash = flashBack.constrainTo(flashFront, { length: 130, stiffness: 1, draw: true, image: flashImg});
   
     flashes.push({ back: flashBack, front: flashFront, constraint: flash });
-    currentFlash = flashes[flashes.length - 1];
-  }
+    return flashes[flashes.length - 1];
 }
 
 // Generate Random Force for Flashes 
@@ -41,28 +39,23 @@ function removeFlash() {
 
 
 function shootFlash() {
-  if (currentFlash !== null) {
-    let flash = currentFlash;
+
+    console.log("shootflash")
+    let flash = createFlash()
     Matter.Body.setStatic(flash.front.body, false);
     Matter.Body.setStatic(flash.back.body, false);
     let force = getRandomForceForFlashes();
     Matter.Body.applyForce(flash.front.body, flash.front.body.position, force);
-    currentFlash = null;
-    setTimeout(removeFlash, 1000); // Entferne den Flash nach 2 Sekunden
-  }
+    setTimeout(removeFlash, 1000); // Entferne den Flash nach 1 Sekunden
 
 }
 
 
 // Starte den Schuss von Blitzen
 function startFlashes() {
-  if (shootInterval && hitFlashSensor == true) {
-    clearInterval(shootInterval); // Beende das aktuelle Intervall, falls vorhanden
-  }
-  
-  if (hitFlashSensor == true) {
-    createFlash();
-    setTimeout(shootFlash, 500)
-    setTimeout(startFlashes, 1000); // Rufe die Funktion startFlashes nach 1 Sekunde erneut auf
+  if (shootInterval == null) {
+    console.log("shootIntervall == true")
+    shootInterval = setInterval(shootFlash, 500)
+    // clearInterval(shootInterval); // Beende das aktuelle Intervall, falls vorhanden
   }
 }

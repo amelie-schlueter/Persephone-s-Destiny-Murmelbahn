@@ -13,6 +13,7 @@ let mouse;
 let arrowBack;
 let arrowFront;
 let arrow;
+let flashImg; 
 let flashBack;
 let flashFront;
 let flash;
@@ -45,6 +46,7 @@ function preload() {
   granatapfelImg = loadImage('granatapfel_small.png');
   saeuleImg = loadImage('saeule_moving.png');
   fallingLanceImg = loadImage('faling-lance.png');
+  flashImg = loadImage('flashImg.png');
   
 }
 

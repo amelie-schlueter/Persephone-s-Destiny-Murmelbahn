@@ -33,8 +33,11 @@ function setupGround(level){
                 trigger: (ball, block) => {
                     forceBall = { x: -0.09, y: -0.0 };
                     setPillarStatus(level, "movingDown"); // Setze Pillar mit Index 0 auf "movingDown"
-                    hitFlashSensor = true;
-                    console.log("Level 2 erreicht")
+                    if (level == 2) {
+                        startFlashes();
+
+                        console.log("Level 2 erreicht")
+                    }
                 }
 
             },

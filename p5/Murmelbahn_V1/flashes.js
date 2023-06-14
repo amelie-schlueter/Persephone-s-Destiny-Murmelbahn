@@ -6,7 +6,7 @@ function createFlash() {
       {frictionAir: 0.1 , isStatic: true});
   
     flashFront = new Ball(world, 
-      {x: 3100, y: 1700, s: 6, r: 20, color: "blue" , 
+      {x: 3100, y: 1700, s: 6, r: 20, 
       trigger: (ball, block) => {
         //Game Over
         console.log("Flash hat Murmel getroffen")
@@ -46,7 +46,7 @@ function shootFlash() {
     Matter.Body.setStatic(flash.back.body, false);
     let force = getRandomForceForFlashes();
     Matter.Body.applyForce(flash.front.body, flash.front.body.position, force);
-    setTimeout(removeFlash, 1000); // Entferne den Flash nach 1 Sekunden
+    setTimeout(removeFlash, 1200); // Entferne den Flash nach 1 Sekunden
 
 }
 
@@ -55,7 +55,7 @@ function shootFlash() {
 function startFlashes() {
   if (shootInterval == null) {
     console.log("shootIntervall == true")
-    shootInterval = setInterval(shootFlash, 500)
+    shootInterval = setInterval(shootFlash, 1000)
     // clearInterval(shootInterval); // Beende das aktuelle Intervall, falls vorhanden
   }
 }

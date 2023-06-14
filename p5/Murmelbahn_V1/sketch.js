@@ -19,7 +19,8 @@ let flashFront;
 let flash;
 let flashes = [];
 let hitFlashSensor = false; 
-let examplePot = [];
+let pots = [];
+let potImg; 
 let fallingLanceImg; 
 let currentGround = null;
 let shootInterval = null; // Referenz auf das Intervall
@@ -44,9 +45,10 @@ const dim = { w: 3840, h: 8640, sw: 1280, sh: 720, d: 100 };
 
 function preload() {
   granatapfelImg = loadImage('granatapfel_small.png');
-  saeuleImg = loadImage('saeule_moving.png');
-  fallingLanceImg = loadImage('faling-lance.png');
+  saeuleImg = loadImage('pillarDown.png');
+  fallingLanceImg = loadImage('falling-lance.png');
   flashImg = loadImage('flashImg.png');
+  potImg = loadImage('potImg.png');
   
 }
 
@@ -73,7 +75,7 @@ function setup() {
 
 
   // Pot Example
-  examplePot.push(createPot(world,2750, 550, 230, 230));
+  pots.push(createPot(world,2675, 525, 150, 230));
 
 
   for (let i = 0; i < 11; i++)
@@ -84,7 +86,7 @@ function setup() {
   movingPillars.push(new Block(
     world,
     {
-      x: dim.w /3 , y: 250, w: 60, h: 500, image: saeuleImg, initialPosition: { x: dim.w / 6, y: 250 }, status: "stopped", direction: 3,
+      x: dim.w /3 - 16, y: 500, w: 60, h: 230, image: saeuleImg, initialPosition: { x: dim.w / 6, y: 350 }, status: "stopped", direction: 3,
       trigger: (ball, block) => {
         // Game Over
         // alert("Ups..Der Granatapfel wurde von einer Säule getroffen. Versuche es nochmal!"), 
@@ -98,7 +100,7 @@ function setup() {
   movingPillars.push(new Block(
     world,
     {
-      x: dim.w / 2, y: 925, w: 450, h: 60, color: "blue", initialPosition: { x: dim.w / 2, y: 950 }, status: "stopped", direction: 3,
+      x: dim.w / 2, y: 925, w: 450, h: 60, color: "blue", initialPosition: { x: dim.w / 2, y: 925 }, status: "stopped", direction: 3,
       trigger: (ball, block) => {
         // Game Over
         // alert("Ups..Der Granatapfel wurde von einer Säule getroffen. Versuche es nochmal!"), 
@@ -142,7 +144,7 @@ function setup() {
   arrowFront = new Ball(world, 
     {x: 2100, y: 350, s: 6, r: 20, color: 'blue'}, 
     {density: 0.015, isStatic: true});
-  arrow = arrowBack.constrainTo(arrowFront, { length: 100, stiffness: 1, draw: true});
+  arrow = arrowBack.constrainTo(arrowFront, { length: 100, stiffness: 1, draw: true, image: flashImg});
 
 
 
@@ -247,7 +249,7 @@ function draw() {
   blocks.forEach(block => block.draw());
   movingPillars.forEach(block => block.draw());
   fallingLance.forEach(block => block.draw());
-  examplePot.forEach(block => block.draw());
+  pots.forEach(block => block.draw());
 
 
 

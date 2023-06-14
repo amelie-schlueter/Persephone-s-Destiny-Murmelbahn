@@ -19,6 +19,7 @@ let flash;
 let flashes = [];
 let hitFlashSensor = false; 
 let examplePot = [];
+let fallingLanceImg; 
 let currentGround = null;
 let shootInterval = null; // Referenz auf das Intervall
 let granatapfelImg;
@@ -43,6 +44,8 @@ const dim = { w: 3840, h: 8640, sw: 1280, sh: 720, d: 100 };
 function preload() {
   granatapfelImg = loadImage('granatapfel_small.png');
   saeuleImg = loadImage('saeule_moving.png');
+  fallingLanceImg = loadImage('faling-lance.png');
+  
 }
 
 function setup() {
@@ -110,16 +113,14 @@ function setup() {
   fallingLance.push(new Block(
     world,
     {
-      x: dim.w / 2 + 305, y: 500, w: 20, h: 450, color: 'green',
+      x: dim.w / 2 + 305, y: 500, w: 20, h: 450, image: fallingLanceImg,
       isTriggered: false,
 
       trigger: (ball, block) => {
         if (!block.isTriggered) {
-          // const targetPosition = { x: block.body.position.x, y: block.body.position.y + block.attributes.h }; // Zielposition (Unterkante der Lanze)
 
           Matter.Body.setStatic(block.body, false);
           Matter.Body.applyForce(block.body, block.body.position, { x: 0.2, y: 0.0 });
-          // Matter.Body.setPosition(block.body, targetPosition); // Setze den Körper auf die Zielposition
 
           block.isTriggered = true;
         }

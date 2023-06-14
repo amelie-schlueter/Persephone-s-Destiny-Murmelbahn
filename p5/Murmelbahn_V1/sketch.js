@@ -64,19 +64,12 @@ function setup() {
   // bottom
   // blocks.push(new BlockCore(world, { x: dim.w / 2, y: dim.h + dim.d / 2, w: dim.w, h: dim.d, color: 'black' }, { isStatic: true }));
 
+  setupGround1();
+
 
   // Pot Example
 
-  examplePot.push(new Block(
-    world,
-    {
-      x: dim.w / 2 + 700, y: 600, w: 100, h: 250, color: 'white',
-      trigger: (ball, block) => { // console.log("Trigger ", ball, block);
-        Matter.Body.setStatic(fallingLance[0].body, true);
-      }
-    },
-    { label: "Murmel", isStatic: true }
-  ));
+  examplePot.push(createPot(world,2750, 550, 230, 230));
 
   // blocks.push(examplePot);
 

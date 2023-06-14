@@ -17,9 +17,13 @@ function setupGround(level){
                 if (level == 2) {
                 hitFlashSensor = true;
                 startFlashes();
-                startArrows();
                 console.log("Level 2 erreicht")
                 }
+                if (level == 4) {
+                  clearInterval(flashesInterval); // Beende das aktuelle Intervall, falls vorhanden
+                  startArrows();
+                  console.log("Level 4 erreicht")
+                  }
               }
             },
             {isStatic: true}

@@ -2,15 +2,15 @@
 
 function createArrow() {
     arrowBack = new Ball(world, 
-      {x: 2200, y: 2800, s: 6, r: 20 }, 
+      {x: 2200, y: 3200, s: 6, r: 20 }, 
       {frictionAir: 0.1 , isStatic: true});
   
     arrowFront = new Ball(world, 
-      {x: 2100, y: 2700, s: 6, r: 20, 
+      {x: 2100, y: 3100, s: 6, r: 20, 
       trigger: (ball, block) => {
         //Game Over
-        console.log("Arrow hat Murmel getroffen")
-        alert("Ups..Zeus Blitze haben dich getroffen. Beginne von vorn")
+        // console.log("Arrow hat Murmel getroffen")
+        // alert("Ups..Du wurdest von einem Pfeil getroffen. Beginne von vorn")
         location.reload();  
       }}, 
       {density: 0.015, isStatic: true});

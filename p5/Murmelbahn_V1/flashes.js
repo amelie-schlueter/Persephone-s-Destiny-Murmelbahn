@@ -10,8 +10,8 @@ function createFlash() {
       trigger: (ball, block) => {
         //Game Over
         console.log("Flash hat Murmel getroffen")
-        alert("Ups..Zeus Blitze haben dich getroffen. Beginne von vorn")
-        location.reload();  
+        // alert("Ups..Zeus Blitze haben dich getroffen. Beginne von vorn")
+        // location.reload();  
       }}, 
       {density: 0.015, isStatic: true});
   
@@ -53,9 +53,9 @@ function shootFlash() {
 
 // Starte den Schuss von Blitzen
 function startFlashes() {
-  if (shootInterval == null) {
+  if (flashesInterval == null) {
     console.log("shootIntervall == true")
-    shootInterval = setInterval(shootFlash, 1000)
+    flashesInterval = setInterval(shootFlash, 1000)
     // clearInterval(shootInterval); // Beende das aktuelle Intervall, falls vorhanden
   }
 }

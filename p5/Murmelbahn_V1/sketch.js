@@ -13,17 +13,18 @@ let mouse;
 let arrowBack;
 let arrowFront;
 let arrow;
+let arrows = []; 
 let flashImg; 
 let flashBack;
 let flashFront;
 let flash;
 let flashes = [];
-let hitFlashSensor = false; 
 let pots = [];
 let potImg; 
 let fallingLanceImg; 
 let currentGround = null;
-let shootInterval = null; // Referenz auf das Intervall
+let flashesInterval = null; // Referenz auf das Intervall
+let arrowInterval = null; // Referenz auf das Intervall
 let granatapfelImg;
 let saeuleImg;
 let fallingLance = [];
@@ -270,9 +271,13 @@ function draw() {
   });
 
   mouse.draw();
-  arrowBack.draw();
-  arrowFront.draw();
-  arrowBack.drawConstraints();
+
+
+  arrows.forEach(arrow => {
+    arrow.back.draw();
+    arrow.front.draw();
+    arrow.back.drawConstraints();
+  }); 
 
   flashes.forEach(flash => {
     flash.back.draw();

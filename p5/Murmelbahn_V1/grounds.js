@@ -17,14 +17,15 @@ function setupGround(level){
                 if (level == 2) {
                 hitFlashSensor = true;
                 startFlashes();
+                startArrows();
                 console.log("Level 2 erreicht")
                 }
               }
             },
             {isStatic: true}
           ));
-    
-    } else {
+} 
+    else {
 
         groundSensors.push(new BlockCore(
             world,

@@ -54,8 +54,8 @@ function shootFlash() {
 // Starte den Schuss von Blitzen
 function startFlashes() {
   if (flashesInterval == null) {
-    console.log("shootIntervall == true")
+    console.log("flashesInterval == true")
     flashesInterval = setInterval(shootFlash, 1000)
-    // clearInterval(shootInterval); // Beende das aktuelle Intervall, falls vorhanden
+    
   }
 }

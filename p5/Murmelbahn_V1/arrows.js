@@ -2,20 +2,20 @@
 
 function createArrow() {
     arrowBack = new Ball(world, 
-      {x: 2200, y: 3200, s: 6, r: 20 }, 
-      {frictionAir: 0.1 , isStatic: true});
+      {x: 3000, y: 3300, s: 6, r: 20, color: "white"}, 
+      {frictionAir: 0.05 , isStatic: true});
   
     arrowFront = new Ball(world, 
-      {x: 2100, y: 3100, s: 6, r: 20, 
+      {x: 2900, y: 3200, s: 6, r: 20, color: "blue" ,
       trigger: (ball, block) => {
         //Game Over
         // console.log("Arrow hat Murmel getroffen")
         // alert("Ups..Du wurdest von einem Pfeil getroffen. Beginne von vorn")
-        location.reload();  
+        // location.reload();  
       }}, 
-      {density: 0.015, isStatic: true});
+      {density: 0.005, isStatic: true});
   
-    arrow = arrowBack.constrainTo(arrowFront, { length: 130, stiffness: 1, draw: true, image: flashImg});
+    arrow = arrowBack.constrainTo(arrowFront, { length: 130, stiffness: 1, draw: true, image: arrowImg});
   
     arrows.push({ back: arrowBack, front: arrowFront, constraint: arrow });
     return arrows[arrows.length - 1];
@@ -24,8 +24,8 @@ function createArrow() {
 // Generate Random Force for Arrows 
 function getRandomForceForArrows() {
   // Generiere zufällige Werte für die x- und y-Komponenten der Kraft
-  let randomX = Math.random() * (-1.5 - (-3)) + (-3);
-  let randomY = Math.random() * (-1 - (-1.5)) + (-1.5);
+  let randomX = Math.random() * (-0.5 - (-1.5)) + (-1.5);
+  let randomY = Math.random() * (-0.01 - (-0.03)) + (-0.5);
   return { x: randomX, y: randomY };
 }
 

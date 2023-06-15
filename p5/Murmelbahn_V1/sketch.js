@@ -13,7 +13,10 @@ let mouse;
 let arrowBack;
 let arrowFront;
 let arrow;
+let startSensor; 
 let arrows = []; 
+let underwaterSensor = []; 
+let arrowImg; 
 let flashImg; 
 let flashBack;
 let flashFront;
@@ -31,7 +34,7 @@ let fallingLance = [];
 let mensch1;
 // let pillarDirection = 3; 
 let movingPillars = [];
-let forceBall = { x: 0.09, y: -0.0 };
+let forceBall = { x: 0.05, y: -0.0 };
 let isDrag = false;
 // an array to contain all the blocks created
 let blocks = [];
@@ -50,6 +53,7 @@ function preload() {
   fallingLanceImg = loadImage('falling-lance.png');
   flashImg = loadImage('flashImg.png');
   potImg = loadImage('potImg.png');
+  arrowImg = loadImage('potImg.png');
   
 }
 
@@ -77,6 +81,7 @@ function setup() {
 
   // Pot Example
   pots.push(createPot(world,2675, 525, 150, 230));
+  startSensorFunc();
 
 
   for (let i = 0; i < 11; i++)
@@ -113,7 +118,6 @@ function setup() {
 
 
 
-
   // create falling lance 
   fallingLance.push(new Block(
     world,
@@ -135,23 +139,12 @@ function setup() {
   ));
 
 
-
-
-  // create arrows 
-
-  arrowBack = new Ball(world, 
-    {x: 2200, y: 400, s: 6, r: 20, color: 'white'},
-    {frictionAir: 0.1 , isStatic: true});
-  arrowFront = new Ball(world, 
-    {x: 2100, y: 350, s: 6, r: 20, color: 'blue'}, 
-    {density: 0.015, isStatic: true});
-  arrow = arrowBack.constrainTo(arrowFront, { length: 100, stiffness: 1, draw: true, image: flashImg});
-
+ 
 
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 100, y: 450, r: 35, image: granatapfelImg },
+    { x: 2000, y: 3050, r: 35, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);
@@ -213,7 +206,7 @@ function keyPressed(event) {
       } else {
 
       }
-
+      // setPillarStatus(0, "movingDown"); // Setze Pillar mit Index 0 auf "movingDown"
       console.log("Space");
       Matter.Body.setStatic(granatapfel.body, false)
       event.preventDefault();
@@ -251,6 +244,7 @@ function draw() {
   movingPillars.forEach(block => block.draw());
   fallingLance.forEach(block => block.draw());
   pots.forEach(block => block.draw());
+  underwaterSensor.forEach(block => block.draw());
 
 
 

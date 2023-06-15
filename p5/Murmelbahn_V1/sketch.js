@@ -10,6 +10,8 @@ let grounds = [];
 let groundSensors = [];
 let world;
 let mouse;
+let fish; 
+let fishes = [];
 let arrowBack;
 let arrowFront;
 let arrow;
@@ -27,6 +29,7 @@ let potImg;
 let fallingLanceImg; 
 let currentGround = null;
 let flashesInterval = null; // Referenz auf das Intervall
+let fishInterval = null; // Referenz auf das Intervall
 let arrowInterval = null; // Referenz auf das Intervall
 let granatapfelImg;
 let saeuleImg;
@@ -144,7 +147,7 @@ function setup() {
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 2000, y: 3050, r: 35, image: granatapfelImg },
+    { x: 2000, y: 350, r: 35, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);
@@ -245,6 +248,7 @@ function draw() {
   fallingLance.forEach(block => block.draw());
   pots.forEach(block => block.draw());
   underwaterSensor.forEach(block => block.draw());
+  fishes.forEach(block => block.draw());
 
 
 

@@ -34,6 +34,7 @@ function setupGround(level){
                         forceBall = { x: 0.05, y: -0.0 }
                         console.log("Gravity wurde geändert. Unterwasserwelt verlassen", engine.world.gravity.y)
                           console.log("Level 8 erreicht")
+                          
                           break;
                       default:
                           console.log(level+ "1");
@@ -66,6 +67,7 @@ function setupGround(level){
                             console.log(granatapfel.body.frictionAir)
                             granatapfel.body.frictionAir = 0.01
                             forceBall = {x: -0.08, y: -0.05 }
+                            startFishes();
                             console.log("Gravity wurde geändert. Unterwasserwelt erreicht" , engine.world.gravity.y)
                             console.log("Level 5 erreicht")
                             break;

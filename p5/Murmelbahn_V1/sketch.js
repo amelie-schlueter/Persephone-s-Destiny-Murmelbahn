@@ -3,6 +3,7 @@ const Runner = Matter.Runner;
 const Bodies = Matter.Bodies;
 const Events = Matter.Events;
 const World = Matter.World;
+Matter.use('matter-wrap'); // setup wrap coordinates plugin
 
 // the Matter engine to animate the world
 let engine;
@@ -10,6 +11,9 @@ let grounds = [];
 let groundSensors = [];
 let world;
 let mouse;
+let portalGround;
+let portalEntrance; 
+let portalExit; 
 let fish; 
 let fishes = [];
 let arrowBack;
@@ -18,6 +22,7 @@ let arrow;
 let startSensor; 
 let arrows = []; 
 let underwaterSensor = []; 
+let luftblasen = []; 
 let arrowImg; 
 let flashImg; 
 let flashBack;
@@ -31,6 +36,7 @@ let currentGround = null;
 let flashesInterval = null; // Referenz auf das Intervall
 let fishInterval = null; // Referenz auf das Intervall
 let arrowInterval = null; // Referenz auf das Intervall
+let luftblasenInterval = null; // Referenz auf das Intervall
 let granatapfelImg;
 let saeuleImg;
 let fallingLance = [];
@@ -89,8 +95,10 @@ function setup() {
 
   for (let i = 0; i < 11; i++)
     setupGround(i);
- 
 
+  
+
+  
   // create moving Pillar 
   movingPillars.push(new Block(
     world,
@@ -147,7 +155,7 @@ function setup() {
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 2000, y: 350, r: 35, image: granatapfelImg },
+    { x: 100, y: 3100, r: 35, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);
@@ -188,7 +196,7 @@ function setup() {
 }
 function scrollEndless(point) {
   // wohin muss verschoben werden damit point wenn möglich in der Mitte bleibt
-  off = { x: Math.min(Math.max(0, point.x - windowWidth / 2), dim.w - windowWidth), y: Math.min(Math.max(0, point.y - windowHeight / 2 - 300), dim.h - windowHeight) };
+  off = { x: Math.min(Math.max(0, point.x - windowWidth / 2), dim.w - windowWidth), y: Math.min(Math.max(0, point.y - windowHeight / 2 - 200), dim.h - windowHeight) };
   // plaziert den Canvas im aktuellen Viewport
   canvasElem.style.left = Math.round(off.x) + 'px';
   canvasElem.style.top = Math.round(off.y) + 'px';
@@ -249,6 +257,7 @@ function draw() {
   pots.forEach(block => block.draw());
   underwaterSensor.forEach(block => block.draw());
   fishes.forEach(block => block.draw());
+  luftblasen.forEach(block => block.draw());
 
 
 
@@ -283,7 +292,7 @@ function draw() {
     flash.back.drawConstraints();
   });
   
- 
+
 
 }
 

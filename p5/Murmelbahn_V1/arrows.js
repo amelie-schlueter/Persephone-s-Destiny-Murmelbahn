@@ -56,6 +56,6 @@ function startArrows() {
   if (arrowInterval == null) {
     console.log("arrowInterval == true")
     arrowInterval = setInterval(shootArrow, 1000)
-    // clearInterval(shootInterval); // Beende das aktuelle Intervall, falls vorhanden
+    clearInterval(shootInterval); // Beende das aktuelle Intervall, falls vorhanden
   }
 }

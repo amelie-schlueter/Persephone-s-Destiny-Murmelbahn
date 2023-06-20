@@ -15,6 +15,7 @@ let portalGround;
 let portalEntrance; 
 let portalExit; 
 let fish; 
+let tintenfischImg; 
 let fishes = [];
 let arrowBack;
 let arrowFront;
@@ -23,6 +24,7 @@ let startSensor;
 let arrows = []; 
 let underwaterSensor = []; 
 let luftblasen = []; 
+let luftblasenImg; 
 let arrowImg; 
 let flashImg; 
 let flashBack;
@@ -38,6 +40,7 @@ let fishInterval = null; // Referenz auf das Intervall
 let arrowInterval = null; // Referenz auf das Intervall
 let luftblasenInterval = null; // Referenz auf das Intervall
 let granatapfelImg;
+let granatapfelImgNeg;
 let saeuleImg;
 let fallingLance = [];
 let mensch1;
@@ -58,11 +61,14 @@ const dim = { w: 3840, h: 8640, sw: 1280, sh: 720, d: 100 };
 
 function preload() {
   granatapfelImg = loadImage('granatapfel_small.png');
+  granatapfelImgNeg = loadImage('granatapfelImgNeg.png');
   saeuleImg = loadImage('pillarDown.png');
   fallingLanceImg = loadImage('falling-lance.png');
   flashImg = loadImage('flashImg.png');
   potImg = loadImage('potImg.png');
-  arrowImg = loadImage('potImg.png');
+  arrowImg = loadImage('arrowImg.png');
+  tintenfischImg = loadImage('tintenfischImg.png');
+  luftblasenImg = loadImage('luftblasenImg.png');
   
 }
 
@@ -155,7 +161,7 @@ function setup() {
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 100, y: 3100, r: 35, image: granatapfelImg },
+    { x: 100, y: 3000, r: 35, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);

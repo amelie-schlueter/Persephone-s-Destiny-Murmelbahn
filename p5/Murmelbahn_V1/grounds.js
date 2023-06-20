@@ -24,6 +24,7 @@ function setupGround(level){
                       case 4:
                           clearInterval(flashesInterval); // Beende das aktuelle Intervall, falls vorhanden
                           startArrows();
+                        // createArrow();
                           console.log("Level 4 erreicht")
                           break;
                     case 6: 
@@ -33,9 +34,9 @@ function setupGround(level){
                         engine.world.gravity.y = 1;
                         forceBall = { x: 0.05, y: -0.0 }
                         console.log("Gravity wurde geändert. Unterwasserwelt verlassen", engine.world.gravity.y)
-                          console.log("Level 8 erreicht")
-                          clearInterval(luftblasenInterval); 
-                          luftblasen = [];
+                        console.log("Level 8 erreicht")
+                        clearInterval(luftblasenInterval); 
+                        luftblasen = [];
                           break;
                       default:
                           console.log(level+ "1");
@@ -72,6 +73,7 @@ function setupGround(level){
                             startLuftblasen();
                             console.log("Gravity wurde geändert. Unterwasserwelt erreicht" , engine.world.gravity.y)
                             console.log("Level 5 erreicht")
+                            granatapfel.attributes.image = granatapfelImgNeg;
                             break;
                         case 7: 
                             forceBall = {x: -0.08, y: -0.05 }

@@ -2,20 +2,21 @@
 
 function createFishes() {
     fish = new Ball(world, 
-      {x: 3000, y: 4600, s: 6, r: 20, color: "white"}, 
-      {frictionAir: 0.0005, density: 0.0006 , isStatic: false});
+      {x: 3000, y: 4600, s: 6, r: 20, image: tintenfischImg}, 
+      {frictionAir: 0.1, density: 0.0003 , isStatic: false});
 
     fishes.push(fish);
     return fishes[fishes.length - 1];
 }
 
-// // Generate Random Force for Arrows 
-// function getRandomForceForArrows() {
-//   // Generiere zufällige Werte für die x- und y-Komponenten der Kraft
-//   let randomX = Math.random() * (-0.5 - (-1.5)) + (-1.5);
-//   let randomY = Math.random() * (-0.01 - (-0.03)) + (-0.5);
-//   return { x: randomX, y: randomY };
-// }
+// Generate Random Force for Arrows 
+function getRandomForceForFish() {
+  // Generiere zufällige Werte für die x- und y-Komponenten der Kraft
+  let randomX = random(-0.02,  -0.025);
+  let randomY = random(-0.006,-0.0062 ) ;
+  console.log("randomForce generated")
+  return { x: randomX, y: randomY };
+}
 
 function removeFishes() {
   if (fishes.length > 0) {
@@ -29,6 +30,7 @@ function removeFishes() {
 function moveFishes() {
     let force = {x: -0.01, y: -0.0135}
     Matter.Body.applyForce(fish.body, fish.body.position, force);
+    // Matter.Body.applyForce(fish.body, fish.body.position, {x: -0.02, y: -0.006});
     // force = force + 0.001
 }
 

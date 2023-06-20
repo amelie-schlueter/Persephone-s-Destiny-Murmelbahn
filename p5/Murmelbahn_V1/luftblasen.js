@@ -32,7 +32,7 @@ function createLuftblase() {
   
     luftblasenInterval = setInterval(function() {
       createLuftblase();
-    }, 200);
+    }, 400);
   
     setInterval(moveLuftblasen,75);
   }

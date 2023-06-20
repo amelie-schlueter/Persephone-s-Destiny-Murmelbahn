@@ -46,7 +46,7 @@ let fallingLance = [];
 let mensch1;
 // let pillarDirection = 3; 
 let movingPillars = [];
-let forceBall = { x: 0.05, y: -0.0 };
+let forceBall = { x: 0.25, y: -0.0 };
 let isDrag = false;
 // an array to contain all the blocks created
 let blocks = [];
@@ -161,7 +161,7 @@ function setup() {
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 100, y: 3000, r: 35, image: granatapfelImg },
+    { x: 100, y: 100, r: 60, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);

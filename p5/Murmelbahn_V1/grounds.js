@@ -13,7 +13,7 @@ function setupGround(level){
             world, 
             { x: 175, y: 720 * (level  +1) - 760, w: 350, h: 70,
               trigger: (ball, block) => {
-                forceBall = { x: 0.09, y: -0.0 };
+                forceBall = { x: 0.25, y: -0.0 };
                 setPillarStatus(level, "movingDown"); // Setze Pillar mit Index 0 auf "movingDown"
                   switch (level) {
                       case 2:
@@ -59,7 +59,7 @@ function setupGround(level){
             {
                 x: dim.w - 175, y: 720 * (level + 1) - 760, w: 350, h: 70,
                 trigger: (ball, block) => {
-                    forceBall = { x: -0.09, y: -0.0 };
+                    forceBall = { x: -0.25, y: -0.0 };
                     setPillarStatus(level, "movingDown"); // Setze Pillar mit Index 0 auf "movingDown"
                     switch (level) {
                         case 5:

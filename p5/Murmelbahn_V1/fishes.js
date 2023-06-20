@@ -12,8 +12,8 @@ function createFishes() {
 // Generate Random Force for Arrows 
 function getRandomForceForFish() {
   // Generiere zufällige Werte für die x- und y-Komponenten der Kraft
-  let randomX = random(-0.02,  -0.025);
-  let randomY = random(-0.006,-0.0062 ) ;
+  let randomX = random(-0.025,  -0.015);
+  let randomY = random(-0.009,-0.004 ) ;
   console.log("randomForce generated")
   return { x: randomX, y: randomY };
 }
@@ -28,7 +28,8 @@ function removeFishes() {
 
 
 function moveFishes() {
-    let force = {x: -0.01, y: -0.0135}
+    // let force = {x: -0.01, y: -0.0135}
+    let force = getRandomForceForFish()
     Matter.Body.applyForce(fish.body, fish.body.position, force);
     // Matter.Body.applyForce(fish.body, fish.body.position, {x: -0.02, y: -0.006});
     // force = force + 0.001

@@ -23,6 +23,7 @@ let arrow;
 let startSensor; 
 let arrows = []; 
 let underwaterSensor = []; 
+let unterwasserFelsen = [];
 let luftblasen = []; 
 let luftblasenImg; 
 let arrowImg; 
@@ -102,6 +103,23 @@ function setup() {
   for (let i = 0; i < 11; i++)
     setupGround(i);
 
+    
+    
+    
+    unterwasserFelsen.push(new Block(
+      world,
+      {
+        x: 825, y: 4880, w: 20, h: 225,
+      },
+      { isStatic: true, angle: PI /3}
+    ));
+    unterwasserFelsen.push(new Block(
+      world,
+      {
+        x: 1000, y: 4880, w: 20, h: 225, 
+      },
+      { isStatic: true, angle: -PI /3}
+    ));
   
 
   
@@ -161,7 +179,7 @@ function setup() {
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 100, y: 100, r: 60, image: granatapfelImg },
+    { x: 100, y: 3300, r: 60, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);
@@ -264,6 +282,8 @@ function draw() {
   underwaterSensor.forEach(block => block.draw());
   fishes.forEach(block => block.draw());
   luftblasen.forEach(block => block.draw());
+  unterwasserFelsen.forEach(block => block.draw());
+
 
 
 

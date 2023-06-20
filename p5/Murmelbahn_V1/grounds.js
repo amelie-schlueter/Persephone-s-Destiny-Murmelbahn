@@ -28,14 +28,17 @@ function setupGround(level){
                           console.log("Level 4 erreicht")
                           break;
                     case 6: 
-                    forceBall = {x: 0.08, y: -0.05 }
+                    forceBall = {x: 0.5, y: -0.15 }
+                    console.log("lvl6")
                     break; 
                       case 8:
                         engine.world.gravity.y = 1;
-                        forceBall = { x: 0.05, y: -0.0 }
+                        forceBall = { x: 0.25, y: -0 }
+                        granatapfel.body.frictionAir = 0
                         console.log("Gravity wurde geändert. Unterwasserwelt verlassen", engine.world.gravity.y)
                         console.log("Level 8 erreicht")
                         clearInterval(luftblasenInterval); 
+                        granatapfel.attributes.image = granatapfelImg;
                         luftblasen = [];
                           break;
                       default:
@@ -65,10 +68,10 @@ function setupGround(level){
                         case 5:
                             clearInterval(arrowInterval);
                             engine.world.gravity.y *= 0.2;
-                            Matter.Body.applyForce(granatapfel.body, granatapfel.body.position, {x: 0, y: 0.1});
+                            Matter.Body.applyForce(granatapfel.body, granatapfel.body.position, {x: 0, y: 0.3});
                             console.log(granatapfel.body.frictionAir)
-                            granatapfel.body.frictionAir = 0.01
-                            forceBall = {x: -0.08, y: -0.05 }
+                            granatapfel.body.frictionAir = 0.025
+                            forceBall = {x: -0.5, y: -0.15 }
                             startFishes();
                             startLuftblasen();
                             console.log("Gravity wurde geändert. Unterwasserwelt erreicht" , engine.world.gravity.y)
@@ -76,7 +79,8 @@ function setupGround(level){
                             granatapfel.attributes.image = granatapfelImgNeg;
                             break;
                         case 7: 
-                            forceBall = {x: -0.08, y: -0.05 }
+                        console.log("lvl 6")
+                        forceBall = {x: -0.25, y: -0.15 }
                             break; 
                         default:
                             console.log(level);

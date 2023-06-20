@@ -6,7 +6,7 @@ function createArrow() {
       {frictionAir: 0.06 , isStatic: true});
   
     arrowFront = new Ball(world, 
-      {x: 2950, y: 3200, s: 6, r: 20 ,color: "blue",
+      {x: 2960, y: 3200, s: 6, r: 20 ,color: "blue",
       trigger: (ball, block) => {
         //Game Over
         console.log("Arrow hat Murmel getroffen")
@@ -24,7 +24,7 @@ function createArrow() {
 // Generate Random Force for Arrows 
 function getRandomForceForArrows() {
   // Generiere zufällige Werte für die x- und y-Komponenten der Kraft
-  let randomX = random(-0.5,-1.3);
+  let randomX = random(-0.5,-1);
   let randomY = random(-0.2,-0.4);
   return { x: randomX, y: randomY };
 }

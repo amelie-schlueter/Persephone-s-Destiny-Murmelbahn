@@ -187,11 +187,14 @@ createFallingLance(dim.w / 2 + 305,500, { x: 0.2, y: 0.0 })
 createFallingLance(dim.w -500,1200, { x: -0.2, y: 0.0 })
 
 // Stütze für die erste Lance 
-blocks.push(new Block(
-  world,
-  {x: dim.w / 2 + 555, y: 500, w: 20, h: 400, color: "white"},
-  {  isStatic: true , angle: PI /3}
-));
+// blocks.push(new Block(
+//   world,
+//   {x: dim.w / 2 + 505, y: 520, w: 20, h: 400, color: "white",
+//   trigger: (ball,block) => {
+//     Matter.Body.setStatic(fallingLance[0].body, true)
+//   }},
+//   {  isStatic: true , angle: PI /3}
+// ));
 
 
  

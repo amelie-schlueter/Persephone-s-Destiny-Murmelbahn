@@ -22,7 +22,9 @@
   <script language="javascript" type="text/javascript" src="./fishes.js"></script>
   <script language="javascript" type="text/javascript" src="./luftblasen.js"></script>
   <script language="javascript" type="text/javascript" src="./unterwelt.js"></script>
+  <script language="javascript" type="text/javascript" src="./unterwasserwelt.js"></script>
   <script language="javascript" type="text/javascript" src="./fallingLance.js"></script>
+  <script language="javascript" type="text/javascript" src="./feuerball.js"></script>
   <script language="javascript" type="text/javascript" src="./portal.js"></script>
   <script language="javascript" type="text/javascript" src="./sketch.js"></script>
 
@@ -39,9 +41,38 @@
       position: absolute;
       width: 3840px;
       height: 8640px;
-      background: url('canvas.jpg') no-repeat;
-      z-index: -1;
+      background: url('background.jpg') no-repeat;
+      z-index: -2;
     }
+    #sprite-foreground {
+      position: absolute;
+      width: 3840px;
+      height: 8640px;
+      background: url('foreground.png') no-repeat;
+      z-index: 0;
+    }
+    .cloud {
+  position: absolute;
+  top: 400px;
+  right: 0;
+  width: 500px;
+  height: 500px;
+  opacity: 60%;
+  background: url('wolke.png') no-repeat;
+  background-size: contain;
+  animation: cloudAnimation 20s linear infinite;
+  z-index: -1;
+}
+
+@keyframes cloudAnimation {
+  from {
+    left: 0;
+  }
+  to {
+    left: 100%;
+  }
+}
+
 
  
   </style>
@@ -53,6 +84,8 @@
   <!-- p5 canvas is generated on run time -->
   <div id="thecanvas"></div>
   <div id="sprite-foreground"></div>
+  <div class="cloud"></div>
+
 </body>
 
 </html>

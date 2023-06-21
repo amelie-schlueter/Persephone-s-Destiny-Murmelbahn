@@ -11,9 +11,12 @@ let grounds = [];
 let groundSensors = [];
 let world;
 let mouse;
+let brunnenImg;
 let portalGround;
 let portalEntrance; 
 let portalExit; 
+let fireballs = [] 
+let fireballImg; 
 let fish; 
 let tintenfischImg; 
 let fishImg; 
@@ -24,7 +27,6 @@ let arrow;
 let startSensor; 
 let arrows = []; 
 let underwaterSensor = []; 
-let unterwasserFelsen = [];
 let luftblasen = []; 
 let smallLuftblasenImg; 
 let mediumLuftblasenImg; 
@@ -45,6 +47,7 @@ let flashesInterval = null; // Referenz auf das Intervall
 let fishInterval = null; // Referenz auf das Intervall
 let arrowInterval = null; // Referenz auf das Intervall
 let luftblasenInterval = null; // Referenz auf das Intervall
+let fireballInterval = null; // Referenz auf das Intervall
 let granatapfelImg;
 let granatapfelImgNeg;
 let saeuleImg;
@@ -79,6 +82,8 @@ function preload() {
   mediumLuftblasenImg = loadImage('mediumLuftblasenImg.png');
   largeLuftblasenImg = loadImage('largeLuftblasenImg.png');
   xLargeLuftblasenImg = loadImage('xLargeLuftblasenImg.png');
+  brunnenImg = loadImage('brunnenImg.png');
+  fireballImg = loadImage('fireballImg.png');
   
 }
 
@@ -103,6 +108,11 @@ function setup() {
   // blocks.push(new BlockCore(world, { x: dim.w / 2, y: dim.h + dim.d / 2, w: dim.w, h: dim.d, color: 'black' }, { isStatic: true }));
   blocks.push(new BlockCore(world, { x: dim.w - 1350, y: 1275, w: 1000, h: 30}, { isStatic: true }));
 
+  
+// Wasserruine Platform
+blocks.push(new BlockCore(world, { x: dim.w - 1200, y: 5640, w: 500, h: 30}, { isStatic: true }));
+
+
   // Baumstamm 
   baumstamm1 = new PolygonFromSVG(
     world, {
@@ -123,33 +133,27 @@ function setup() {
 
   blocks.push(baumstamm1,baumstamm2),
 
+
+  // Brunnen Stütze
+  blocks.push(new Block(world, { x: dim.w - 350, y: 3460, w: 20, h: 115 }, { isStatic: true }));
+
   // Pot Example
   pots.push(createPot(world,2675, 525, 150, 230));
   startSensorFunc();
 
   felsenSvg(950, 6150, "FelsenSvg1.svg")
   felsenSvg(200, 6125, "FelsenSvg2.svg")
+  unterwasserFelsenSvg(950, 4900, "UnterwasserFelsenBig.svg")
+  unterwasserFelsenSvg(1100, 5625, "UnterwasserFelsenBig.svg")
+  unterwasserFelsenSvg(1575, 5625, "UnterwasserFelsenBig.svg")
+  unterwasserFelsenSvg(2800, 4920, "UnterwasserFelsenSmall.svg")
+  unterwasserFelsenSvg(2300, 5625, "UnterwasserFelsenSmall.svg")
 
   for (let i = 0; i < 11; i++)
     setupGround(i);
 
  
-    
-    unterwasserFelsen.push(new Block(
-      world,
-      {
-        x: 825, y: 4880, w: 20, h: 225,
-      },
-      { isStatic: true, angle: PI /3}
-    ));
-    unterwasserFelsen.push(new Block(
-      world,
-      {
-        x: 1000, y: 4880, w: 20, h: 225, 
-      },
-      { isStatic: true, angle: -PI /3}
-    ));
-  
+
 
   
   // create moving Pillar 
@@ -185,6 +189,7 @@ function setup() {
   // create falling lance 
 createFallingLance(dim.w / 2 + 305,500, { x: 0.2, y: 0.0 })
 createFallingLance(dim.w -500,1200, { x: -0.2, y: 0.0 })
+createFallingLance(dim.w -750,3350, { x: 0.2, y: 0.0 })
 
 // Stütze für die erste Lance 
 // blocks.push(new Block(
@@ -202,7 +207,7 @@ createFallingLance(dim.w -500,1200, { x: -0.2, y: 0.0 })
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 100, y: 100, r: 60, image: granatapfelImg },
+    { x: 100, y: 5200, r: 60, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);
@@ -305,7 +310,7 @@ function draw() {
   underwaterSensor.forEach(block => block.draw());
   fishes.forEach(block => block.draw());
   luftblasen.forEach(block => block.draw());
-  unterwasserFelsen.forEach(block => block.draw());
+  fireballs.forEach(block => block.draw());
 
 
 

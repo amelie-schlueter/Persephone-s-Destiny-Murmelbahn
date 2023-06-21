@@ -5,7 +5,7 @@ function createFishes(max) {
     const fishType = Math.floor(random(0,2))
     console.log(fishType) 
     fish = new Block(world, 
-      {x: random(2000,3700), y: random(4400, 4600), w: 30, h: 30, image: fishType? tintenfischImg:fishImg, fishType: fishType }, 
+      {x: random(2000,3700), y: random(4400, 4600), w: 25, h: 25, image: fishType? tintenfischImg:fishImg, fishType: fishType }, 
 
       {frictionAir: 0.1, density: 0.0003 , isStatic: false});
 
@@ -17,11 +17,11 @@ function createFishes(max) {
 function getRandomForceForFish(fishType) {
   // Generiere zufällige Werte für die x- und y-Komponenten der Kraft
   let randomX, randomY;
-  if (fishType == 0) {
+  if (fishType == 1) {
     randomX = random(-0.025, -0.015);
-    randomY = random(-0.009, -0.004);
+    randomY = random(-0.006, -0.004);
   } else {
-    randomX = random(-0.025, -0.015);
+    randomX = random(-0.015, -0.02);
     randomY = 0; 
   }
   console.log("randomForce generated")
@@ -52,6 +52,7 @@ function moveFishes() {
 function startFishes() {
     console.log("fishInterval == true")
     let fish = createFishes(3)
-    setInterval(moveFishes, 700)
+    setInterval(moveFishes, 16)
     // clearInterval(shootInterval); // Beende das aktuelle Intervall, falls vorhanden
 }
+

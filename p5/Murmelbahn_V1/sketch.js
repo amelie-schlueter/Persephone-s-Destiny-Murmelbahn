@@ -156,7 +156,7 @@ function setup() {
   movingPillars.push(new Block(
     world,
     {
-      x: dim.w /3 - 16, y: 500, w: 60, h: 230, image: saeuleImg, initialPosition: { x: dim.w / 6, y: 350 }, status: "stopped", direction: 3,
+      x: dim.w /3 - 14, y: 500, w: 60, h: 230, image: saeuleImg, initialPosition: { x: dim.w / 6, y: 350 }, status: "stopped", direction: 3,
       trigger: (ball, block) => {
         // Game Over
         // alert("Ups..Der Granatapfel wurde von einer Säule getroffen. Versuche es nochmal!"), 
@@ -318,7 +318,7 @@ function draw() {
         Matter.Body.setPosition(block.body, { x: block.body.position.x, y: block.body.position.y + block.attributes.direction });
       }
     } else if (block.attributes.status === 'movingUp') {
-      if (block.body.position.y <= block.attributes.initialPosition.y) {
+      if (block.body.position.y <= block.attributes.initialPosition.y + 25) {
         block.attributes.status = 'movingDown';
       } else {
         Matter.Body.setPosition(block.body, { x: block.body.position.x, y: block.body.position.y - block.attributes.direction });

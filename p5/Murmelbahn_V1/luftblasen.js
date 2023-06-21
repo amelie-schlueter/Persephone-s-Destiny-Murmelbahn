@@ -1,45 +1,56 @@
-function createLuftblase() {
-    const radius = Math.random() * (25 - 10) + 10;
-    luftblasen.push(
-      new Ball(world,
-        { x: 1500, y: 5700, r: radius + 10, color: "white" },
-        { density: 0.0005, restitution: 0, frictionAir: 0.09, isStatic: false }
-      )
-    );
+function createLuftblase(x,y) {
+  const radius = Math.random() * (25 - 10) + 10;
+  let image = mediumLuftblasenImg
+  if (radius < 12) {
+    image = smallLuftblasenImg
+  } else if (radius < 17) {
+    image = mediumLuftblasenImg
+  } else if (radius < 20) {
+    image = largeLuftblasenImg
+  } else if (radius < 25) {
+    image = xLargeLuftblasenImg
   }
-  
-  function getRandomForceForLuftblasen() {
-    let randomY = random (-0.005,-0.008)
-    let randomX = random (0.003,-0.003)
-  
-    return { x: randomX, y: randomY };
-  }
-  
-  function moveLuftblasen() {
-    for (let i = 0; i < luftblasen.length; i++) {
-      let force = getRandomForceForLuftblasen();
-      Matter.Body.applyForce(luftblasen[i].body, luftblasen[i].body.position, force);
-  
-      if (luftblasen[i].body.position.y < luftblasen[i].attributes.y - 500) {
-        removeLuftblase(i);
-      }
+  luftblasen.push(
+    new Ball(world,
+      { x: x, y: y, r: radius + 10, image: image },
+      { density: 0.0005, restitution: 0, frictionAir: 0.09, isStatic: false }
+    )
+  );
+}
+
+function getRandomForceForLuftblasen() {
+  let randomY = random(-0.005, -0.008)
+  let randomX = random(0.003, -0.003)
+
+  return { x: randomX, y: randomY };
+}
+
+function moveLuftblasen() {
+  for (let i = 0; i < luftblasen.length; i++) {
+    let force = getRandomForceForLuftblasen();
+    Matter.Body.applyForce(luftblasen[i].body, luftblasen[i].body.position, force);
+
+    if (luftblasen[i].body.position.y < luftblasen[i].attributes.y - 500) {
+      removeLuftblase(i);
     }
   }
-  
-  function startLuftblasen() {
-    console.log("Luftblaseninterval == true");
-    luftblasen = []; // Leeres Array für Luftblasen erstellen
-  
-    luftblasenInterval = setInterval(function() {
-      createLuftblase();
-    }, 300);
-  
-    setInterval(moveLuftblasen,75);
-  }
-  
-  function removeLuftblase(index) {
-    let removedLuftblase = luftblasen.splice(index, 1)[0];
-    Matter.Composite.remove(world, [removedLuftblase.body]);
-    console.log("Luftblase gelöscht");
-  }
-  
+}
+
+
+function startLuftblasen() {
+  console.log("Luftblaseninterval == true");
+  luftblasen = []; // Leeres Array für Luftblasen erstellen
+
+  luftblasenInterval = setInterval(function () {
+    createLuftblase(1375,5700);
+    createLuftblase(1700,4975);
+  }, 300);
+
+  setInterval(moveLuftblasen, 75);
+}
+
+function removeLuftblase(index) {
+  let removedLuftblase = luftblasen.splice(index, 1)[0];
+  Matter.Composite.remove(world, [removedLuftblase.body]);
+  console.log("Luftblase gelöscht");
+}

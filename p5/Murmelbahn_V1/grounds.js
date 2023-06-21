@@ -67,8 +67,8 @@ function setupGround(level){
                     switch (level) {
                         case 5:
                             clearInterval(arrowInterval);
+                            Matter.Body.applyForce(granatapfel.body, granatapfel.body.position, {x: 0, y: 0.8});
                             engine.world.gravity.y *= 0.2;
-                            Matter.Body.applyForce(granatapfel.body, granatapfel.body.position, {x: 0, y: 0.3});
                             console.log(granatapfel.body.frictionAir)
                             granatapfel.body.frictionAir = 0.025
                             forceBall = {x: -0.5, y: -0.15 }

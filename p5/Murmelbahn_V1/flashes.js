@@ -24,8 +24,8 @@ function createFlash() {
 // Generate Random Force for Flashes 
 function getRandomForceForFlashes() {
   // Generiere zufällige Werte für die x- und y-Komponenten der Kraft
-  let randomX = Math.random() * (-1.5 - (-3)) + (-3);
-  let randomY = Math.random() * (-1 - (-1.5)) + (-1.5);
+  let randomX = random(-1.5, -3) 
+  let randomY = random(-1, -1.5)
   return { x: randomX, y: randomY };
 }
 
@@ -39,7 +39,6 @@ function removeFlash() {
 
 
 function shootFlash() {
-
     console.log("shootflash")
     let flash = createFlash()
     Matter.Body.setStatic(flash.front.body, false);
@@ -47,7 +46,6 @@ function shootFlash() {
     let force = getRandomForceForFlashes();
     Matter.Body.applyForce(flash.front.body, flash.front.body.position, force);
     setTimeout(removeFlash, 1200); // Entferne den Flash nach 1 Sekunden
-
 }
 
 
@@ -55,7 +53,7 @@ function shootFlash() {
 function startFlashes() {
   if (flashesInterval == null) {
     console.log("flashesInterval == true")
-    flashesInterval = setInterval(shootFlash, 1000)
+    flashesInterval = setInterval(shootFlash, 700)
     
   }
 }

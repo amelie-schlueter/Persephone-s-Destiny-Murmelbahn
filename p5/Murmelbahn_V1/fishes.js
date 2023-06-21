@@ -1,19 +1,29 @@
 
 
-function createFishes() {
-    fish = new Ball(world, 
-      {x: 3000, y: 4600, s: 6, r: 20, image: tintenfischImg}, 
+function createFishes(max) {
+  for (i =0; i<max ; i++) {
+    const fishType = Math.floor(random(0,2))
+    console.log(fishType) 
+    fish = new Block(world, 
+      {x: random(2000,3700), y: random(4400, 4600), w: 30, h: 30, image: fishType? tintenfischImg:fishImg, fishType: fishType }, 
+
       {frictionAir: 0.1, density: 0.0003 , isStatic: false});
 
     fishes.push(fish);
-    return fishes[fishes.length - 1];
+  }
 }
 
 // Generate Random Force for Arrows 
-function getRandomForceForFish() {
+function getRandomForceForFish(fishType) {
   // Generiere zufällige Werte für die x- und y-Komponenten der Kraft
-  let randomX = random(-0.025,  -0.015);
-  let randomY = random(-0.009,-0.004 ) ;
+  let randomX, randomY;
+  if (fishType == 0) {
+    randomX = random(-0.025, -0.015);
+    randomY = random(-0.009, -0.004);
+  } else {
+    randomX = random(-0.025, -0.015);
+    randomY = 0; 
+  }
   console.log("randomForce generated")
   return { x: randomX, y: randomY };
 }
@@ -22,26 +32,26 @@ function removeFishes() {
   if (fishes.length > 0) {
     let removedFish = fishes.shift(); // Entferne das erste Element aus dem Array
     Matter.Composite.remove(world, [removedFish.body]);
-    console.log("Letztes Arrow gelöscht");
+    console.log("Letztes Fish gelöscht");
   }
 }
 
 
 function moveFishes() {
     // let force = {x: -0.01, y: -0.0135}
-    let force = getRandomForceForFish()
-    Matter.Body.applyForce(fish.body, fish.body.position, force);
+    fishes.forEach(fish => {
+      let force = getRandomForceForFish(fish.attributes.fishType)
+      Matter.Body.applyForce(fish.body, fish.body.position, force);
+    })
     // Matter.Body.applyForce(fish.body, fish.body.position, {x: -0.02, y: -0.006});
     // force = force + 0.001
 }
 
 
-// Starte den Schuss von Blitzen
+// Starte den Schuss von Fishes
 function startFishes() {
-  if (fishInterval == null) {
     console.log("fishInterval == true")
-    let fish = createFishes()
-    fishInterval = setInterval(moveFishes, 700)
+    let fish = createFishes(3)
+    setInterval(moveFishes, 700)
     // clearInterval(shootInterval); // Beende das aktuelle Intervall, falls vorhanden
-  }
 }

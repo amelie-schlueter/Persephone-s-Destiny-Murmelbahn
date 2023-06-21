@@ -16,6 +16,7 @@ let portalEntrance;
 let portalExit; 
 let fish; 
 let tintenfischImg; 
+let fishImg; 
 let fishes = [];
 let arrowBack;
 let arrowFront;
@@ -25,7 +26,10 @@ let arrows = [];
 let underwaterSensor = []; 
 let unterwasserFelsen = [];
 let luftblasen = []; 
-let luftblasenImg; 
+let smallLuftblasenImg; 
+let mediumLuftblasenImg; 
+let largeLuftblasenImgLuftblasenImg; 
+let xLargeLuftblasenImg; 
 let arrowImg; 
 let flashImg; 
 let flashBack;
@@ -34,6 +38,7 @@ let flash;
 let flashes = [];
 let pots = [];
 let potImg; 
+let baumstamm1; 
 let fallingLanceImg; 
 let currentGround = null;
 let flashesInterval = null; // Referenz auf das Intervall
@@ -69,7 +74,11 @@ function preload() {
   potImg = loadImage('potImg.png');
   arrowImg = loadImage('arrowImg.png');
   tintenfischImg = loadImage('tintenfischImg.png');
-  luftblasenImg = loadImage('luftblasenImg.png');
+  fishImg = loadImage('fishImg.png');
+  smallLuftblasenImg = loadImage('smallLuftblasenImg.png');
+  mediumLuftblasenImg = loadImage('mediumLuftblasenImg.png');
+  largeLuftblasenImg = loadImage('largeLuftblasenImg.png');
+  xLargeLuftblasenImg = loadImage('xLargeLuftblasenImg.png');
   
 }
 
@@ -92,19 +101,39 @@ function setup() {
   blocks.push(new BlockCore(world, { x: dim.w / 2, y: -dim.d / 2, w: dim.w, h: dim.d, color: 'black' }, { isStatic: true }));
   // bottom
   // blocks.push(new BlockCore(world, { x: dim.w / 2, y: dim.h + dim.d / 2, w: dim.w, h: dim.d, color: 'black' }, { isStatic: true }));
+  blocks.push(new BlockCore(world, { x: dim.w - 1350, y: 1275, w: 1000, h: 30}, { isStatic: true }));
 
+  // Baumstamm 
+  baumstamm1 = new PolygonFromSVG(
+    world, {
+    x: dim.w -210,
+    y: 2375,
+    fromFile: 'Baumstamm1.svg',
+    scale: 1,
+  }, { isStatic: true, friction: 0.0 }
+  )
+  baumstamm2 = new PolygonFromSVG(
+    world, {
+    x: 200,
+    y: 3100,
+    fromFile: 'Baumstamm2.svg',
+    scale: 1,
+  }, { isStatic: true, friction: 0.0 }
+  )
 
+  blocks.push(baumstamm1,baumstamm2),
 
   // Pot Example
   pots.push(createPot(world,2675, 525, 150, 230));
   startSensorFunc();
 
+  felsenSvg(950, 6150, "FelsenSvg1.svg")
+  felsenSvg(200, 6125, "FelsenSvg2.svg")
 
   for (let i = 0; i < 11; i++)
     setupGround(i);
 
-    
-    
+ 
     
     unterwasserFelsen.push(new Block(
       world,
@@ -141,7 +170,7 @@ function setup() {
   movingPillars.push(new Block(
     world,
     {
-      x: dim.w / 2, y: 925, w: 450, h: 60, color: "blue", initialPosition: { x: dim.w / 2, y: 925 }, status: "stopped", direction: 3,
+      x: dim.w / 2 - 600, y: 925, w: 450, h: 60, color: "blue", initialPosition: { x: dim.w / 2, y: 925 }, status: "stopped", direction: 3,
       trigger: (ball, block) => {
         // Game Over
         // alert("Ups..Der Granatapfel wurde von einer Säule getroffen. Versuche es nochmal!"), 
@@ -154,24 +183,15 @@ function setup() {
 
 
   // create falling lance 
-  fallingLance.push(new Block(
-    world,
-    {
-      x: dim.w / 2 + 305, y: 500, w: 20, h: 450, image: fallingLanceImg,
-      isTriggered: false,
+createFallingLance(dim.w / 2 + 305,500, { x: 0.2, y: 0.0 })
+createFallingLance(dim.w -500,1200, { x: -0.2, y: 0.0 })
 
-      trigger: (ball, block) => {
-        if (!block.isTriggered) {
-
-          Matter.Body.setStatic(block.body, false);
-          Matter.Body.applyForce(block.body, block.body.position, { x: 0.2, y: 0.0 });
-
-          block.isTriggered = true;
-        }
-      }
-    },
-    {  isStatic: true }
-  ));
+// Stütze für die erste Lance 
+blocks.push(new Block(
+  world,
+  {x: dim.w / 2 + 555, y: 500, w: 20, h: 400, color: "white"},
+  {  isStatic: true , angle: PI /3}
+));
 
 
  
@@ -179,7 +199,7 @@ function setup() {
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 100, y: 3300, r: 60, image: granatapfelImg },
+    { x: 100, y: 100, r: 60, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);

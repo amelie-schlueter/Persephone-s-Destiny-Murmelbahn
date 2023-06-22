@@ -6,7 +6,7 @@ function createArrow() {
       {frictionAir: 0.06 , isStatic: true});
   
     arrowFront = new Ball(world, 
-      {x: 2960, y: 3200, s: 6, r: 20 ,color: "blue",
+      {x: 3000, y: 3260, s: 6, r: 20 ,color: "blue",
       trigger: (ball, block) => {
         //Game Over
         console.log("Arrow hat Murmel getroffen")

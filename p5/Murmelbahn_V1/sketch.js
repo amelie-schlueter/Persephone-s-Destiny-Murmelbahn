@@ -207,7 +207,7 @@ createFallingLance(dim.w -750,3350, { x: 0.2, y: 0.0 })
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 3400, y: 3200, r: 60, image: granatapfelImg },
+    { x: 100, y: 500, r: 60, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);
@@ -310,7 +310,6 @@ function draw() {
   underwaterSensor.forEach(block => block.draw());
   fishes.forEach(block => block.draw());
   luftblasen.forEach(block => block.draw());
-  fireballs.forEach(block => block.draw());
 
 
 
@@ -338,6 +337,12 @@ function draw() {
     arrow.back.draw();
     arrow.front.draw();
     arrow.back.drawConstraints();
+  }); 
+
+  fireballs.forEach(fireball => {
+    fireball.back.draw();
+    fireball.front.draw();
+    fireball.back.drawConstraints();
   }); 
 
   flashes.forEach(flash => {

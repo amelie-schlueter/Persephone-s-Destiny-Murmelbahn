@@ -207,7 +207,7 @@ createFallingLance(dim.w -750,3350, { x: 0.2, y: 0.0 })
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 100, y: 5200, r: 60, image: granatapfelImg },
+    { x: 100, y: 4000, r: 60, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);

@@ -75,6 +75,7 @@ function setupGround(level){
                             console.log(granatapfel.body.frictionAir)
                             granatapfel.body.frictionAir = 0.025
                             forceBall = {x: -0.5, y: -0.15 }
+                            startFishes();
                             startLuftblasen();
                             console.log("Gravity wurde geändert. Unterwasserwelt erreicht" , engine.world.gravity.y)
                             console.log("Level 5 erreicht")

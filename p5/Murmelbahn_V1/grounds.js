@@ -29,7 +29,7 @@ function setupGround(level){
                           break;
                     case 6: 
                     forceBall = {x: 0.5, y: -0.15 }
-                    startFishes();
+                    startFirstFishes();
                     console.log("lvl6")
                     break; 
                       case 8:
@@ -75,7 +75,7 @@ function setupGround(level){
                             console.log(granatapfel.body.frictionAir)
                             granatapfel.body.frictionAir = 0.025
                             forceBall = {x: -0.5, y: -0.15 }
-                            startFishes();
+                            
                             startLuftblasen();
                             console.log("Gravity wurde geändert. Unterwasserwelt erreicht" , engine.world.gravity.y)
                             console.log("Level 5 erreicht")
@@ -83,6 +83,7 @@ function setupGround(level){
                             break;
                         case 7: 
                         console.log("lvl 6")
+                        startSecondFishes();
                         forceBall = {x: -0.25, y: -0.15 }
                             break; 
                         default:

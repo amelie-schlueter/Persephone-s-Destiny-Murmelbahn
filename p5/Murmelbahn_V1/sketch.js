@@ -66,6 +66,10 @@ let bgMusic;
 let soundFireball; 
 let unterweltSound;
 let soundBlitz; 
+let gifSound;
+let vaseImg;
+let vasen = [];
+let fallingLanceSound; 
 
 let canvasElem;
 let off = { x: 0, y: 0 };
@@ -81,6 +85,7 @@ function preload() {
   fallingLanceImg = loadImage('falling-lance.png');
   flashImg = loadImage('flashImg.png');
   potImg = loadImage('potImg.png');
+  vaseImg = loadImage('VaseImg.png');
   arrowImg = loadImage('arrowImg.png');
   tintenfischImg = loadImage('tintenfischImg.png');
   fishImg = loadImage('fishImg.png');
@@ -91,6 +96,7 @@ function preload() {
   brunnenImg = loadImage('brunnenImg.png');
   fireballImg = loadImage('fireballImg.png');
   fallingFelsbrockenImg = loadImage('fallingFelsbrockenImg.png');
+  
 
     // load sound
     birdSinging = loadSound('./Sounds/bird-singing.mp3');
@@ -111,6 +117,10 @@ function preload() {
     unterweltSound.playMode('sustain');
     soundBlitz = loadSound('./Sounds/SoundFlash.mp3');
     soundBlitz.playMode('sustain');
+    gifSound = loadSound('./Sounds/gifSound.mp3');
+    gifSound.playMode('sustain');
+    fallingLanceSound = loadSound('./Sounds/fallingLanceSound.mp3');
+    fallingLanceSound.playMode('sustain');
 }
 
 function setup() {
@@ -177,6 +187,9 @@ blocks.push(new BlockCore(world, { x: dim.w - 1200, y: 5640, w: 500, h: 30}, { i
 
   // Pot Example
   pots.push(createPot(world,2675, 525, 150, 230));
+  pots.push(fallingPotSensor(world,790, 1240, 150, 230));
+  vasen.push(createVase(world,790, 1040, 150, 230));
+
   startSensorFunc();
 
   felsenSvg(200, 6150, "FelsenSvg01.svg")
@@ -254,7 +267,7 @@ createFelsbrocken(3150, 6000, "FallingFelsen.svg");
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 100, y: 1200, r: 60, image: granatapfelImg },
+    { x: 100, y: 100, r: 60, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);
@@ -358,6 +371,8 @@ function draw() {
   underwaterSensor.forEach(block => block.draw());
   fishes.forEach(block => block.draw());
   luftblasen.forEach(block => block.draw());
+  vasen.forEach(block => block.draw());
+
 
 
 

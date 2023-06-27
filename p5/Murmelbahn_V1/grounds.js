@@ -77,6 +77,7 @@ function setupGround(level){
                       case 3:
                         console.log("level 3 erreicht. Wald erreicht")
                         birdSinging.play(); 
+                        clearInterval(flashesInterval)
                       break; 
                         case 5:
                             clearInterval(arrowInterval);

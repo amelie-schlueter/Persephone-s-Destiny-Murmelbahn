@@ -17,6 +17,7 @@
   <script language="javascript" type="text/javascript" src="../classes/BlocksFromSVG.js"></script>
   <script language="javascript" type="text/javascript" src="./grounds.js"></script>
   <script language="javascript" type="text/javascript" src="./createPot.js"></script>
+  <script language="javascript" type="text/javascript" src="./createVase.js"></script>
   <script language="javascript" type="text/javascript" src="./flashes.js"></script>
   <script language="javascript" type="text/javascript" src="./arrows.js"></script>
   <script language="javascript" type="text/javascript" src="../libraries/p5.sound.js"></script>
@@ -30,6 +31,21 @@
   <script language="javascript" type="text/javascript" src="./sketch.js"></script>
 
   <style>
+
+    #gif {
+      position: absolute;
+      display: none;
+      top: 5600px;
+      left: 2900px;
+    }
+    #gif-nymphe {
+      position: absolute;
+      display: block;
+      top: 2250px;
+      left: 1200px;
+      z-index: -2;
+    }
+
     body {
       padding: 0;
       margin: 0;
@@ -69,6 +85,7 @@
   z-index: -1;
 }
 
+ 
 @keyframes cloudAnimation {
   0% {
     transform: translateX(0);
@@ -118,6 +135,8 @@
   <div class="cloud" id="cloud2"></div>
   <div class="cloud" id="cloud3"></div>
   <div class="cloud" id="cloud4"></div>
+  <img src="gif-new.gif" id="gif"></img>
+  <img src="gif-nymphe.gif" id="gif-nymphe"></img>
 
 </body>
 

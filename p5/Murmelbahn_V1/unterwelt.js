@@ -41,6 +41,8 @@
                             { isStatic: false }
                         );
                         blocks.push(ball);
+                        document.getElementById("gif").style.display = "block"
+                        gifSound.play();
                     }
                 }, 350);
             }

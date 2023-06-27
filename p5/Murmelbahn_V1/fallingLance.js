@@ -13,6 +13,9 @@ function createFallingLance(x, y, force) {
             block.isTriggered = true;  // Trigger-Status auf "true" setzen, um Mehrfachauslösung zu verhindern
             Matter.Body.setStatic(block.body, false);
             Matter.Body.applyForce(block.body, block.body.position, force);
+            setTimeout(() => {
+              fallingLanceSound.play();
+            }, 600);
           }
         }
       },

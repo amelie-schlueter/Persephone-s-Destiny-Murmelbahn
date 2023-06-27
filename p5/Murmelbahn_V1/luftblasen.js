@@ -30,25 +30,29 @@ function moveLuftblasen() {
     let force = getRandomForceForLuftblasen();
     Matter.Body.applyForce(luftblasen[i].body, luftblasen[i].body.position, force);
 
-    if (luftblasen[i].body.position.y < luftblasen[i].attributes.y - 500) {
-      removeLuftblase(i);
+    if (luftblasen[0].body.position.y < luftblasen[0].attributes.y - 500) {
+      removeLuftblase(0);
     }
   }
 }
 
+let luftblasenInterval2
 
 function startLuftblasen() {
   console.log("Luftblaseninterval == true");
   luftblasen = []; // Leeres Array für Luftblasen erstellen
 
   luftblasenInterval = setInterval(function () {
-    createLuftblase(1375,5700);
-    createLuftblase(3000,5700);
     createLuftblase(1700,4975);
+    createLuftblase(3000,5700);
+    
   
   }, 300);
+  luftblasenInterval2 = setInterval(function() {
+    createLuftblase(1375,5700);
+  } , 100);
 
-  setInterval(moveLuftblasen, 75);
+    setInterval(moveLuftblasen, 75);
 }
 
 function removeLuftblase(index) {

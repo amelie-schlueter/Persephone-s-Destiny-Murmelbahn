@@ -12,8 +12,6 @@ let groundSensors = [];
 let world;
 let mouse;
 let brunnenImg;
-let portalGround;
-let portalEntrance; 
 let portalExit; 
 let fireballs = [] 
 let fireballImg; 
@@ -52,6 +50,7 @@ let granatapfelImg;
 let granatapfelImgNeg;
 let saeuleImg;
 let fallingLance = [];
+let lanceSoldatImg;
 let mensch1;
 // let pillarDirection = 3; 
 let movingPillars = [];
@@ -70,6 +69,7 @@ let gifSound;
 let vaseImg;
 let vasen = [];
 let fallingLanceSound; 
+let theEndSound;
 
 let canvasElem;
 let off = { x: 0, y: 0 };
@@ -83,10 +83,11 @@ function preload() {
   granatapfelImgNeg = loadImage('granatapfelImgNeg.png');
   saeuleImg = loadImage('pillarDown.png');
   fallingLanceImg = loadImage('falling-lance.png');
+  lanceSoldatImg = loadImage('lanceSoldat.png');
   flashImg = loadImage('flashImg.png');
   potImg = loadImage('potImg.png');
   vaseImg = loadImage('VaseImg.png');
-  arrowImg = loadImage('arrowImg.png');
+  arrowImg = loadImage('arrowImgSmall.png');
   tintenfischImg = loadImage('tintenfischImg.png');
   fishImg = loadImage('fishImg.png');
   smallLuftblasenImg = loadImage('smallLuftblasenImg.png');
@@ -121,6 +122,8 @@ function preload() {
     gifSound.playMode('sustain');
     fallingLanceSound = loadSound('./Sounds/fallingLanceSound.mp3');
     fallingLanceSound.playMode('sustain');
+    theEndSound = loadSound('./Sounds/theEndSound.mp3');
+    theEndSound.playMode('sustain');
 }
 
 function setup() {
@@ -231,14 +234,14 @@ blocks.push(new BlockCore(world, { x: dim.w - 1200, y: 5640, w: 500, h: 30}, { i
   movingPillars.push(new Block(
     world,
     {
-      x: dim.w / 2 - 600, y: 925, w: 450, h: 60, image: saeuleImg, initialPosition: { x: dim.w / 2, y: 925 }, status: "stopped", direction: 3,
+      x: dim.w / 2 - 656, y: 1055, w: 60, h: 300, image: saeuleImg, initialPosition: { x: dim.w / 6, y: 1055 }, status: "stopped", direction: 3,
       trigger: (ball, block) => {
         // Game Over
         // alert("Ups..Der Granatapfel wurde von einer Säule getroffen. Versuche es nochmal!"), 
         // location.reload();  
       }
     },
-    { isStatic: true, angle: PI / 2 },
+    { isStatic: true},
   ));
 
 
@@ -247,6 +250,11 @@ blocks.push(new BlockCore(world, { x: dim.w - 1200, y: 5640, w: 500, h: 30}, { i
 createFallingLance(dim.w / 2 + 305,500, { x: 0.2, y: 0.0 })
 createFallingLance(dim.w -500,1200, { x: -0.2, y: 0.0 })
 createFallingLance(dim.w -750,3350, { x: 0.2, y: 0.0 })
+
+// Lance des Soldaten 
+blocks.push (new Block(world, {x: 1160, y: 2635, w: 15, h: 470,  image: lanceSoldatImg},
+  {isStatic: true, angle:  130 * (Math.PI / 180)}))
+ 
 
 
 createFelsbrocken(3150, 6000, "FallingFelsen.svg");
@@ -267,7 +275,7 @@ createFelsbrocken(3150, 6000, "FallingFelsen.svg");
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 100, y: 100, r: 60, image: granatapfelImg },
+    { x: 100, y: 6000, r: 60, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);

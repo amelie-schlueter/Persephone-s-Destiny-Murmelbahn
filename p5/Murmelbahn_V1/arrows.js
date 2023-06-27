@@ -2,11 +2,11 @@
 
 function createArrow() {
     arrowBack = new Ball(world, 
-      {x: 3000, y: 3260, s: 6, r: 20}, 
+      {x: 2850, y: 3180, s: 6, r: 20}, 
       {frictionAir: 0.06 , isStatic: true});
   
     arrowFront = new Ball(world, 
-      {x: 3000, y: 3260, s: 6, r: 20,
+      {x: 2850, y: 3180, s: 6, r: 20,
       trigger: (ball, block) => {
         //Game Over
         console.log("Arrow hat Murmel getroffen")

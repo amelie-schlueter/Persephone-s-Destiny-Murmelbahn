@@ -44,12 +44,20 @@ function setupGround(level){
                         underwaterSound.stop()
                         bubbleSound.stop();
                         clearInterval(luftblasenInterval); 
+                        clearInterval(luftblasenInterval2); 
                         granatapfel.attributes.image = granatapfelImg;
                         luftblasen = [];
                         unterweltSound.play()
                           break;
                         case 10: 
-                        
+                        console.log("lvl10")
+                        granatapfel.attributes.image = granatapfelImgNeg;
+                        bgMusic.stop()
+                        unterweltSound.stop()
+                        clearInterval(fireballInterval);
+
+                        theEndSound.play();
+                        break; 
                       default:
                           console.log(level+ "1");
                   }

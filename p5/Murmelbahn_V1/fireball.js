@@ -56,6 +56,7 @@ function shootFireball() {
   Matter.Body.setStatic(fireball.front.body, false);
   Matter.Body.setStatic(fireball.back.body, false);
   const force = getRandomForceForFireballs();
+  soundFireball.play();
   Matter.Body.applyForce(fireball.front.body, fireball.front.body.position, force);
   setTimeout(removeFireball, 1200); // Entferne den Fireball nach 1 Sekunden
 }

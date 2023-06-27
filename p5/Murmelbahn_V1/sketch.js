@@ -62,6 +62,10 @@ let blocks = [];
 let granatapfel;
 let fallingFelsbrocken; 
 let fallingFelsbrockenImg; 
+let bgMusic; 
+let soundFireball; 
+let unterweltSound;
+let soundBlitz; 
 
 let canvasElem;
 let off = { x: 0, y: 0 };
@@ -99,6 +103,14 @@ function preload() {
     underwaterSound.playMode('sustain');
     arrowSound = loadSound('./Sounds/arrow.mp3');
     arrowSound.playMode('sustain');
+    bgMusic = loadSound('./Sounds/bg-music.mp3');
+    bgMusic.playMode('sustain');
+    soundFireball = loadSound('./Sounds/soundFireball.mp3');
+    soundFireball.playMode('sustain');
+    unterweltSound = loadSound('./Sounds/UnterweltSound.mp3');
+    unterweltSound.playMode('sustain');
+    soundBlitz = loadSound('./Sounds/SoundBlitz.mp3');
+    soundBlitz.playMode('sustain');
 }
 
 function setup() {
@@ -163,9 +175,6 @@ blocks.push(new BlockCore(world, { x: dim.w - 1200, y: 5640, w: 500, h: 30}, { i
 
 
 
-// Sklaven Stütze 
-blocks.push(new Block(world, { x: 1500, y: 1660, w: 750, h: 20}, { isStatic: true}));
-
   // Pot Example
   pots.push(createPot(world,2675, 525, 150, 230));
   startSensorFunc();
@@ -183,7 +192,7 @@ blocks.push(new Block(world, { x: 1500, y: 1660, w: 750, h: 20}, { isStatic: tru
 
  
 
-
+  bgMusic.play()
   
   // create moving Pillar 
   movingPillars.push(new Block(
@@ -204,7 +213,7 @@ blocks.push(new Block(world, { x: 1500, y: 1660, w: 750, h: 20}, { isStatic: tru
   movingPillars.push(new Block(
     world,
     {
-      x: dim.w / 2 - 600, y: 925, w: 450, h: 60, color: "blue", initialPosition: { x: dim.w / 2, y: 925 }, status: "stopped", direction: 3,
+      x: dim.w / 2 - 600, y: 925, w: 450, h: 60, image: saeuleImg, initialPosition: { x: dim.w / 2, y: 925 }, status: "stopped", direction: 3,
       trigger: (ball, block) => {
         // Game Over
         // alert("Ups..Der Granatapfel wurde von einer Säule getroffen. Versuche es nochmal!"), 
@@ -240,7 +249,7 @@ createFelsbrocken(3150, 6000, "FallingFelsen.svg");
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 100, y: 5600, r: 60, image: granatapfelImg },
+    { x: 100, y: 100, r: 60, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);
@@ -321,6 +330,7 @@ function keyPressed(event) {
       console.log(keyCode);
   }
 }
+
 
 function draw() {
   //background(0,1)

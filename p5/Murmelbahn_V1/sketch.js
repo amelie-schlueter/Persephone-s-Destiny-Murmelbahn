@@ -60,6 +60,8 @@ let isDrag = false;
 // an array to contain all the blocks created
 let blocks = [];
 let granatapfel;
+let fallingFelsbrocken; 
+let fallingFelsbrockenImg; 
 
 let canvasElem;
 let off = { x: 0, y: 0 };
@@ -84,7 +86,19 @@ function preload() {
   xLargeLuftblasenImg = loadImage('xLargeLuftblasenImg.png');
   brunnenImg = loadImage('brunnenImg.png');
   fireballImg = loadImage('fireballImg.png');
-  
+  fallingFelsbrockenImg = loadImage('fallingFelsbrockenImg.png');
+
+    // load sound
+    birdSinging = loadSound('./Sounds/bird-singing.mp3');
+    birdSinging.playMode('sustain');
+    bubbleSound = loadSound('./Sounds/bubbles.mp3');
+    bubbleSound.playMode('sustain');
+    waterSplash = loadSound('./Sounds/water-splash.mp3');
+    waterSplash.playMode('sustain');
+    underwaterSound = loadSound('./Sounds/underwater.mp3');
+    underwaterSound.playMode('sustain');
+    arrowSound = loadSound('./Sounds/arrow.mp3');
+    arrowSound.playMode('sustain');
 }
 
 function setup() {
@@ -96,6 +110,16 @@ function setup() {
 
   engine = Engine.create();
   world = engine.world;
+
+    // setup hit sound
+    Matter.Events.on(engine, 'collisionStart', function(event) {
+      const pairs = event.pairs[0];
+      const bodyA = pairs.bodyA;
+      const bodyB = pairs.bodyB;
+      if (bodyA.label === "Murmel" || bodyB.label === "propeller") {
+
+      }
+    });
 
   // create outer frame
   // left
@@ -137,12 +161,17 @@ blocks.push(new BlockCore(world, { x: dim.w - 1200, y: 5640, w: 500, h: 30}, { i
   // Brunnen Stütze
   blocks.push(new Block(world, { x: dim.w - 350, y: 3460, w: 20, h: 115 }, { isStatic: true }));
 
+
+
+// Sklaven Stütze 
+blocks.push(new Block(world, { x: 1500, y: 1660, w: 750, h: 20}, { isStatic: true}));
+
   // Pot Example
   pots.push(createPot(world,2675, 525, 150, 230));
   startSensorFunc();
 
-  felsenSvg(950, 6150, "FelsenSvg1.svg")
-  felsenSvg(200, 6125, "FelsenSvg2.svg")
+  // felsenSvg(dim.w /2 -125, 6250, "Felsen1.svg")
+  // felsenSvg(dim.w /2 , 6125, "Felsen1.svg")
   unterwasserFelsenSvg(950, 4900, "UnterwasserFelsenBig.svg")
   unterwasserFelsenSvg(1100, 5625, "UnterwasserFelsenBig.svg")
   unterwasserFelsenSvg(1575, 5625, "UnterwasserFelsenBig.svg")
@@ -163,6 +192,7 @@ blocks.push(new BlockCore(world, { x: dim.w - 1200, y: 5640, w: 500, h: 30}, { i
       x: dim.w /3 - 14, y: 500, w: 60, h: 230, image: saeuleImg, initialPosition: { x: dim.w / 6, y: 350 }, status: "stopped", direction: 3,
       trigger: (ball, block) => {
         // Game Over
+  
         // alert("Ups..Der Granatapfel wurde von einer Säule getroffen. Versuche es nochmal!"), 
         // location.reload();  
 
@@ -191,6 +221,9 @@ createFallingLance(dim.w / 2 + 305,500, { x: 0.2, y: 0.0 })
 createFallingLance(dim.w -500,1200, { x: -0.2, y: 0.0 })
 createFallingLance(dim.w -750,3350, { x: 0.2, y: 0.0 })
 
+
+createFelsbrocken(3150, 6000, "FallingFelsen.svg");
+
 // Stütze für die erste Lance 
 // blocks.push(new Block(
 //   world,
@@ -207,7 +240,7 @@ createFallingLance(dim.w -750,3350, { x: 0.2, y: 0.0 })
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 100, y: 500, r: 60, image: granatapfelImg },
+    { x: 100, y: 5600, r: 60, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);

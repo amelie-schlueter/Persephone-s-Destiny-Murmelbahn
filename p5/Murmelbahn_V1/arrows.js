@@ -43,6 +43,7 @@ function shootArrow() {
     let arrow = createArrow()
     Matter.Body.setStatic(arrow.front.body, false);
     Matter.Body.setStatic(arrow.back.body, false);
+    arrowSound.play()
     let force = getRandomForceForArrows();
     Matter.Body.applyForce(arrow.front.body, arrow.front.body.position, force);
     setTimeout(removeArrow, 1200); // Entferne den Arrow nach 1 Sekunden

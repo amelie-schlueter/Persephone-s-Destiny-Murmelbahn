@@ -25,11 +25,13 @@ function setupGround(level){
                           clearInterval(flashesInterval); // Beende das aktuelle Intervall, falls vorhanden
                           startArrows();
                         // createArrow();
+                        
                           console.log("Level 4 erreicht")
                           break;
                     case 6: 
                     forceBall = {x: 0.5, y: -0.15 }
                     startFirstFishes();
+                    bubbleSound.play()
                     console.log("lvl6")
                     break; 
                       case 8:
@@ -38,12 +40,14 @@ function setupGround(level){
                         granatapfel.body.frictionAir = 0
                         console.log("Gravity wurde geändert. Unterwasserwelt verlassen", engine.world.gravity.y)
                         console.log("Level 8 erreicht")
+                        underwaterSound.stop()
+                        bubbleSound.stop();
                         clearInterval(luftblasenInterval); 
                         granatapfel.attributes.image = granatapfelImg;
                         luftblasen = [];
                           break;
                         case 10: 
-                        createFireball()
+                        
                       default:
                           console.log(level+ "1");
                   }
@@ -68,6 +72,10 @@ function setupGround(level){
                     forceBall = { x: -0.25, y: -0.0 };
                     setPillarStatus(level, "movingDown"); // Setze Pillar mit Index 0 auf "movingDown"
                     switch (level) {
+                      case 3:
+                        console.log("level 3 erreicht. Wald erreicht")
+                        birdSinging.play(); 
+                      break; 
                         case 5:
                             clearInterval(arrowInterval);
                             Matter.Body.applyForce(granatapfel.body, granatapfel.body.position, {x: 0, y: 0.8});
@@ -75,16 +83,23 @@ function setupGround(level){
                             console.log(granatapfel.body.frictionAir)
                             granatapfel.body.frictionAir = 0.025
                             forceBall = {x: -0.5, y: -0.15 }
-                            
                             startLuftblasen();
                             console.log("Gravity wurde geändert. Unterwasserwelt erreicht" , engine.world.gravity.y)
+                            underwaterSound.play()
                             console.log("Level 5 erreicht")
+                            birdSinging.stop(); 
+                            waterSplash.play()
+                            bubbleSound.play();
                             granatapfel.attributes.image = granatapfelImgNeg;
                             break;
                         case 7: 
                         console.log("lvl 6")
                         startSecondFishes();
+                        bubbleSound.play()
                         forceBall = {x: -0.25, y: -0.15 }
+                            break; 
+                            case 9:
+                              startFireballs(); 
                             break; 
                         default:
                             console.log(level);

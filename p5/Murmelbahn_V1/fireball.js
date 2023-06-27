@@ -1,15 +1,15 @@
 function createFireball() {
   const fireballBack = new Ball(
     world,
-    { x: 3000, y: 6000, s: 6, r: 20, color: "white" },
+    { x: 300, y: 6850, s: 6, r: 20, color: "white" },
     { frictionAir: 0.06, isStatic: true }
   );
 
   const fireballFront = new Ball(
     world,
     {
-      x: 3000,
-      y: 6000,
+      x: 300,
+      y: 6850,
       s: 6,
       r: 20,
       color: "blue",
@@ -37,7 +37,7 @@ function createFireball() {
 // Generate Random Force for Fireballs
 function getRandomForceForFireballs() {
   // Generiere zufällige Werte für die x- und y-Komponenten der Kraft
-  const randomX = random(-0.5, -1);
+  const randomX = random(0.5, 1.5);
   const randomY = random(-0.2, -0.4);
   return { x: randomX, y: randomY };
 }

@@ -1,25 +1,5 @@
 
 
-
-
-// function createFishes(max) {
-//   for (let i = 0; i < max; i++) {
-//     const fishType = Math.floor(Math.random() * 2);
-//     const fish = new Block(
-//       world,
-//       {
-//         x: random(1500, 3900),
-//         y: random(4400, 4800),
-//         w: 25,
-//         h: 25,
-//         image: fishType ? tintenfischImg : fishImg,
-//         fishType: fishType
-//       },
-//       { frictionAir: 0.1, density: 0.01, isStatic: false }
-//     );
-//     fishes.push(fish);
-//   }
-// }
 function createFishes(max, minY, maxY, minX, maxX) {
   for (let i = 0; i < max; i++) {
     const fishType = Math.floor(Math.random() * 2);

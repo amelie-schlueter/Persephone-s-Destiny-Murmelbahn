@@ -1,7 +1,7 @@
 function createFireball() {
   const fireballBack = new Ball(
     world,
-    { x: 300, y: 6850, s: 6, r: 20, color: "white" },
+    { x: 300, y: 6850, s: 6, r: 20},
     { frictionAir: 0.06, isStatic: true }
   );
 
@@ -12,7 +12,6 @@ function createFireball() {
       y: 6850,
       s: 6,
       r: 20,
-      color: "blue",
       trigger: (ball, block) => {
         // Game Over
         console.log("Fireball hat Murmel getroffen");

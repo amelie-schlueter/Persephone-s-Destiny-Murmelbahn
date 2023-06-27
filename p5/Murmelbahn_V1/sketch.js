@@ -109,7 +109,7 @@ function preload() {
     soundFireball.playMode('sustain');
     unterweltSound = loadSound('./Sounds/UnterweltSound.mp3');
     unterweltSound.playMode('sustain');
-    soundBlitz = loadSound('./Sounds/SoundBlitz.mp3');
+    soundBlitz = loadSound('./Sounds/SoundFlash.mp3');
     soundBlitz.playMode('sustain');
 }
 
@@ -182,6 +182,9 @@ blocks.push(new BlockCore(world, { x: dim.w - 1200, y: 5640, w: 500, h: 30}, { i
   felsenSvg(200, 6150, "FelsenSvg01.svg")
   felsenSvg(1400 , 6275, "FelsenSvg02.svg")
   felsenSvg(2900 , 6275, "FelsenSvg03.svg")
+  felsenSvg(3550 , 7020, "FelsenSvg04.svg")
+  felsenSvg(2400 , 7000, "FelsenSvg05.svg")
+  felsenSvg(1050 , 7000, "FelsenSvg06.svg")
 
   unterwasserFelsenSvg(950, 4900, "UnterwasserFelsenBig.svg")
   unterwasserFelsenSvg(1100, 5625, "UnterwasserFelsenBig.svg")
@@ -251,7 +254,7 @@ createFelsbrocken(3150, 6000, "FallingFelsen.svg");
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 100, y: 5500, r: 60, image: granatapfelImg },
+    { x: 100, y: 1200, r: 60, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);

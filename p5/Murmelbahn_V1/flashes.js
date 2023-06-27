@@ -2,11 +2,11 @@
 
 function createFlash() {
     flashBack = new Ball(world, 
-      {x: 3200, y: 1800, s: 6, r: 20 }, 
+      {x: 2750, y: 1550, s: 6, r: 20 }, 
       {frictionAir: 0.1 , isStatic: true});
   
     flashFront = new Ball(world, 
-      {x: 3100, y: 1700, s: 6, r: 20, 
+      {x: 2750, y: 1550, s: 6, r: 20, 
       trigger: (ball, block) => {
         //Game Over
         console.log("Flash hat Murmel getroffen")
@@ -24,8 +24,8 @@ function createFlash() {
 // Generate Random Force for Flashes 
 function getRandomForceForFlashes() {
   // Generiere zufällige Werte für die x- und y-Komponenten der Kraft
-  let randomX = random(-1.5, -3) 
-  let randomY = random(-1, -1.5)
+  let randomX = random(-1, -5) 
+  let randomY = random(0.25, 1)
   return { x: randomX, y: randomY };
 }
 
@@ -44,6 +44,7 @@ function shootFlash() {
     Matter.Body.setStatic(flash.front.body, false);
     Matter.Body.setStatic(flash.back.body, false);
     let force = getRandomForceForFlashes();
+    soundBlitz.play()
     Matter.Body.applyForce(flash.front.body, flash.front.body.position, force);
     setTimeout(removeFlash, 1200); // Entferne den Flash nach 1 Sekunden
 }

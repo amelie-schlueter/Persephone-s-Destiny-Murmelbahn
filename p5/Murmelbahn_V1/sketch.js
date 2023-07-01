@@ -70,8 +70,6 @@ let vaseImg;
 let vasen = [];
 let fallingLanceSound; 
 let theEndSound;
-let granatapfelCrack; 
-
 
 let canvasElem;
 let off = { x: 0, y: 0 };
@@ -126,8 +124,6 @@ function preload() {
     fallingLanceSound.playMode('sustain');
     theEndSound = loadSound('./Sounds/theEndSound.mp3');
     theEndSound.playMode('sustain');
-    granatapfelCrack = loadSound('./Sounds/granatapfelCrack.mp3');
-    granatapfelCrack.playMode('sustain');
 }
 
 function setup() {
@@ -263,16 +259,6 @@ blocks.push (new Block(world, {x: 1160, y: 2635, w: 15, h: 470,  image: lanceSol
 
 createFelsbrocken(3150, 6000, "FallingFelsen.svg");
 
-
-// blocks.push (new Block(world, 
-//   {x: dim.w /2  , y: 8800, w: dim.w, h: 470,  color: "white"
-//   },
-//   {isStatic: true}))
-
-blocks.push(createEndBlock(world,dim.w /2, 8800, dim.w, 470))
-blocks.push (new Block(world, {x: 200, y: 8700, w: dim.w, h: 200,  color: "white"},
-  {isStatic: true, angle: PI / 4 } ))
-
 // Stütze für die erste Lance 
 // blocks.push(new Block(
 //   world,
@@ -289,7 +275,7 @@ blocks.push (new Block(world, {x: 200, y: 8700, w: dim.w, h: 200,  color: "white
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 100, y: 100, r: 60, image: granatapfelImg },
+    { x: 100, y: 6000, r: 60, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);

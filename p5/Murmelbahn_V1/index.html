@@ -27,7 +27,6 @@
   <script language="javascript" type="text/javascript" src="./unterwasserwelt.js"></script>
   <script language="javascript" type="text/javascript" src="./fallingLance.js"></script>
   <script language="javascript" type="text/javascript" src="./fireball.js"></script>
-  <script language="javascript" type="text/javascript" src="./theEnd.js"></script>
   <script language="javascript" type="text/javascript" src="./portal.js"></script>
   <script language="javascript" type="text/javascript" src="./sketch.js"></script>
 
@@ -62,7 +61,7 @@
       position: absolute;
       width: 3840px;
       height: 8640px;
-      background: url('Texture-bg.png') no-repeat;
+      background: url('background.jpg') no-repeat;
       z-index: -2;
     }
     #sprite-foreground {
@@ -75,19 +74,47 @@
 
 
 
-    .cloud {
+    #cloud1 {
   position: absolute;
-  width: 300px;
-  height: 300px;
+  top: 400px;
+  right: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
   opacity: 60%;
   background: url('wolke.png') no-repeat;
   background-size: contain;
+  animation: cloudAnimation 60s linear infinite;
   z-index: -1;
 }
 
+ 
 @keyframes cloudAnimation {
   0% {
     transform: translateX(0);
+  }
+  100% {
+    transform: translateX(3400px);
+  }
+}
+
+#cloud2 {
+  position: absolute;
+  top: 300px;
+  right: 0;
+  left: 0;
+  width: 400px;
+  height: 400px;
+  opacity: 60%;
+  background: url('wolke.png') no-repeat;
+  background-size: contain;
+  animation: cloudAnimation2 100s linear infinite;
+  z-index: -1;
+}
+
+@keyframes cloudAnimation2 {
+  0% {
+    transform: translateX(400px);
   }
   100% {
     transform: translateX(3400px);
@@ -107,7 +134,10 @@
   <!-- p5 canvas is generated on run time -->
   <div id="thecanvas"></div>
   <div id="sprite-foreground"></div>
-  <div class="cloud"></div>
+  <div class="cloud" id="cloud1"></div>
+  <div class="cloud" id="cloud2"></div>
+  <div class="cloud" id="cloud3"></div>
+  <div class="cloud" id="cloud4"></div>
   <img src="gif-new.gif" id="gif"></img>
   <img src="gif-nymphe.gif" id="gif-nymphe"></img>
 

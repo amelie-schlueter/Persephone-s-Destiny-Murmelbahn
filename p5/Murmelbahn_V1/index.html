@@ -15,20 +15,19 @@
   <script language="javascript" type="text/javascript" src="../classes/Magnet.js"></script>
   <script language="javascript" type="text/javascript" src="../classes/PolygonFromSVG.js"></script>
   <script language="javascript" type="text/javascript" src="../classes/BlocksFromSVG.js"></script>
-  <script language="javascript" type="text/javascript" src="./grounds.js"></script>
-  <script language="javascript" type="text/javascript" src="./createPot.js"></script>
-  <script language="javascript" type="text/javascript" src="./createVase.js"></script>
-  <script language="javascript" type="text/javascript" src="./flashes.js"></script>
-  <script language="javascript" type="text/javascript" src="./arrows.js"></script>
   <script language="javascript" type="text/javascript" src="../libraries/p5.sound.js"></script>
-  <script language="javascript" type="text/javascript" src="./fishes.js"></script>
-  <script language="javascript" type="text/javascript" src="./luftblasen.js"></script>
-  <script language="javascript" type="text/javascript" src="./unterwelt.js"></script>
-  <script language="javascript" type="text/javascript" src="./unterwasserwelt.js"></script>
-  <script language="javascript" type="text/javascript" src="./fallingLance.js"></script>
-  <script language="javascript" type="text/javascript" src="./fireball.js"></script>
-  <script language="javascript" type="text/javascript" src="./theEnd.js"></script>
-  <script language="javascript" type="text/javascript" src="./portal.js"></script>
+  <script language="javascript" type="text/javascript" src="js/grounds.js"></script>
+  <script language="javascript" type="text/javascript" src="js/createPot.js"></script>
+  <script language="javascript" type="text/javascript" src="js/createVase.js"></script>
+  <script language="javascript" type="text/javascript" src="js/flashes.js"></script>
+  <script language="javascript" type="text/javascript" src="js/arrows.js"></script>
+  <script language="javascript" type="text/javascript" src="js/fishes.js"></script>
+  <script language="javascript" type="text/javascript" src="js/luftblasen.js"></script>
+  <script language="javascript" type="text/javascript" src="js/unterwelt.js"></script>
+  <script language="javascript" type="text/javascript" src="js/unterwasserwelt.js"></script>
+  <script language="javascript" type="text/javascript" src="js/fallingLance.js"></script>
+  <script language="javascript" type="text/javascript" src="js/fireball.js"></script>
+  <script language="javascript" type="text/javascript" src="js/theEnd.js"></script>
   <script language="javascript" type="text/javascript" src="./sketch.js"></script>
 
   <style>
@@ -62,40 +61,201 @@
       position: absolute;
       width: 3840px;
       height: 8640px;
-      background: url('Texture-bg.png') no-repeat;
+      background: url('images/Texture-bg.png') no-repeat;
       z-index: -2;
     }
     #sprite-foreground {
       position: absolute;
       width: 3840px;
       height: 8640px;
-      background: url('foreground.png') no-repeat;
+      background: url('images/foreground.png') no-repeat;
       z-index: 0;
     }
 
 
+ 
 
-    .cloud {
+    #cloud1 {
   position: absolute;
-  width: 300px;
-  height: 300px;
+  top: 400px;
+  right: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
   opacity: 60%;
-  background: url('wolke.png') no-repeat;
+  background: url('images/wolke.png') no-repeat;
   background-size: contain;
+  animation: cloudAnimation1 60s linear infinite;
   z-index: -1;
 }
 
-@keyframes cloudAnimation {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(3400px);
-  }
+#cloud2 {
+  position: absolute;
+  top: 400px;
+  right: 0;
+  left: 0;
+  width: 400px;
+  height: 400px;
+  opacity: 60%;
+  background: url('images/wolke.png') no-repeat;
+  background-size: contain;
+  animation: cloudAnimation2 100s linear infinite;
+  z-index: -1;
 }
 
+#cloud3 {
+  position: absolute;
+  top: 450px;
+  right: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  opacity: 60%;
+  background: url('images/wolke.png') no-repeat;
+  background-size: contain;
+  animation: cloudAnimation3 120s linear infinite;
+  z-index: -1;
+}
 
+#cloud4 {
+  position: absolute;
+  top: 450px;
+  right: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  opacity: 60%;
+  background: url('images/wolke.png') no-repeat;
+  background-size: contain;
+  animation: cloudAnimation4 200s linear infinite;
+  z-index: -1;
+}
+    #cloud5 {
+  position: absolute;
+  top: 400px;
+  right: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  opacity: 60%;
+  background: url('images/wolke.png') no-repeat;
+  background-size: contain;
+  animation: cloudAnimation5 60s linear infinite;
+  z-index: -1;
+}
 
+#cloud6 {
+  position: absolute;
+  top: 450px;
+  right: 0;
+  left: 0;
+  width: 400px;
+  height: 400px;
+  opacity: 60%;
+  background: url('images/wolke.png') no-repeat;
+  background-size: contain;
+  animation: cloudAnimation6 100s linear infinite;
+  z-index: -1;
+}
+
+#cloud7 {
+  position: absolute;
+  top: 450px;
+  right: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  opacity: 60%;
+  background: url('images/wolke.png') no-repeat;
+  background-size: contain;
+  animation: cloudAnimation7 120s linear infinite;
+  z-index: -1;
+}
+
+#cloud8 {
+  position: absolute;
+  top: 400px;
+  right: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  opacity: 60%;
+  background: url('images/wolke.png') no-repeat;
+  background-size: contain;
+  animation: cloudAnimation8 200s linear infinite;
+  z-index: -1;
+}
+
+@keyframes cloudAnimation1 {
+      0% {
+        transform: translateX(2100px);
+      }
+      100% {
+        transform: translateX(29000px);
+      }
+    }
+
+    @keyframes cloudAnimation2 {
+      0% {
+        transform: translateX(1200px);
+      }
+      100% {
+        transform: translateX(2200px);
+      }
+    }
+
+    @keyframes cloudAnimation3 {
+      0% {
+        transform: translateX(1700px);
+      }
+      100% {
+        transform: translateX(2600px);
+      }
+    }
+
+    @keyframes cloudAnimation4 {
+      0% {
+        transform: translateX(1000pxpx);
+      }
+      100% {
+        transform: translateX(3400px);
+      }
+    }
+@keyframes cloudAnimation5 {
+      0% {
+        transform: translateX(2000px);
+      }
+      100% {
+        transform: translateX(3900px);
+      }
+    }
+
+    @keyframes cloudAnimation6 {
+      0% {
+        transform: translateX(400px);
+      }
+      100% {
+        transform: translateX(2200px);
+      }
+    }
+
+    @keyframes cloudAnimation7 {
+      0% {
+        transform: translateX(2900px);
+      }
+      100% {
+        transform: translateX(3800px);
+      }
+    }
+
+    @keyframes cloudAnimation8 {
+      0% {
+        transform: translateX(1600px);
+      }
+      100% {
+        transform: translateX(3400px);
+      }
+    }
 
  
   </style>
@@ -107,9 +267,16 @@
   <!-- p5 canvas is generated on run time -->
   <div id="thecanvas"></div>
   <div id="sprite-foreground"></div>
-  <div class="cloud"></div>
-  <img src="gif-new.gif" id="gif"></img>
-  <img src="gif-nymphe.gif" id="gif-nymphe"></img>
+  <div class="cloud" id="cloud1"></div>
+  <div class="cloud" id="cloud2"></div>
+  <div class="cloud" id="cloud3"></div>
+  <div class="cloud" id="cloud4"></div>
+  <div class="cloud" id="cloud5"></div>
+  <div class="cloud" id="cloud6"></div>
+  <div class="cloud" id="cloud7"></div>
+  <div class="cloud" id="cloud8"></div>
+  <img src="./images/gif-new.gif" id="gif"></img>
+  <img src="./images/gif-nymphe.gif" id="gif-nymphe"></img>
 
 </body>
 

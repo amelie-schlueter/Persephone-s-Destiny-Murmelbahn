@@ -81,24 +81,24 @@ let active = -1;
 const dim = { w: 3840, h: 8640, sw: 1280, sh: 720, d: 100 };
 
 function preload() {
-  granatapfelImg = loadImage('granatapfel_small.png');
-  granatapfelImgNeg = loadImage('granatapfelImgNeg.png');
-  saeuleImg = loadImage('pillarDown.png');
-  fallingLanceImg = loadImage('falling-lance.png');
-  lanceSoldatImg = loadImage('lanceSoldat.png');
-  flashImg = loadImage('flashImg.png');
-  potImg = loadImage('potImg.png');
-  vaseImg = loadImage('VaseImg.png');
-  arrowImg = loadImage('arrowImgSmall.png');
-  tintenfischImg = loadImage('tintenfischImg.png');
-  fishImg = loadImage('fishImg.png');
-  smallLuftblasenImg = loadImage('smallLuftblasenImg.png');
-  mediumLuftblasenImg = loadImage('mediumLuftblasenImg.png');
-  largeLuftblasenImg = loadImage('largeLuftblasenImg.png');
-  xLargeLuftblasenImg = loadImage('xLargeLuftblasenImg.png');
-  brunnenImg = loadImage('brunnenImg.png');
-  fireballImg = loadImage('fireballImg.png');
-  fallingFelsbrockenImg = loadImage('fallingFelsbrockenImg.png');
+  granatapfelImg = loadImage('images/granatapfel_small.png');
+  granatapfelImgNeg = loadImage('images/granatapfelImgNeg.png');
+  saeuleImg = loadImage('images/pillarDown.png');
+  fallingLanceImg = loadImage('images/falling-lance.png');
+  lanceSoldatImg = loadImage('images/lanceSoldat.png');
+  flashImg = loadImage('images/flashImg.png');
+  potImg = loadImage('images/potImg.png');
+  vaseImg = loadImage('images/VaseImg.png');
+  arrowImg = loadImage('images/arrowImgSmall.png');
+  tintenfischImg = loadImage('images/tintenfischImg.png');
+  fishImg = loadImage('images/fishImg.png');
+  smallLuftblasenImg = loadImage('images/smallLuftblasenImg.png');
+  mediumLuftblasenImg = loadImage('images/mediumLuftblasenImg.png');
+  largeLuftblasenImg = loadImage('images/largeLuftblasenImg.png');
+  xLargeLuftblasenImg = loadImage('images/xLargeLuftblasenImg.png');
+  brunnenImg = loadImage('images/brunnenImg.png');
+  fireballImg = loadImage('images/fireballImg.png');
+  fallingFelsbrockenImg = loadImage('images/fallingFelsbrockenImg.png');
   
 
     // load sound
@@ -171,7 +171,7 @@ blocks.push(new BlockCore(world, { x: dim.w - 1200, y: 5640, w: 500, h: 30}, { i
     world, {
     x: dim.w -210,
     y: 2375,
-    fromFile: 'Baumstamm1.svg',
+    fromFile: 'svg/Baumstamm1.svg',
     scale: 1,
   }, { isStatic: true, friction: 0.0 }
   )
@@ -179,7 +179,7 @@ blocks.push(new BlockCore(world, { x: dim.w - 1200, y: 5640, w: 500, h: 30}, { i
     world, {
     x: 200,
     y: 3100,
-    fromFile: 'Baumstamm2.svg',
+    fromFile: 'svg/Baumstamm2.svg',
     scale: 1,
   }, { isStatic: true, friction: 0.0 }
   )
@@ -199,18 +199,18 @@ blocks.push(new BlockCore(world, { x: dim.w - 1200, y: 5640, w: 500, h: 30}, { i
 
   startSensorFunc();
 
-  felsenSvg(200, 6150, "FelsenSvg01.svg")
-  felsenSvg(1400 , 6275, "FelsenSvg02.svg")
-  felsenSvg(2900 , 6275, "FelsenSvg03.svg")
-  felsenSvg(3550 , 7020, "FelsenSvg04.svg")
-  felsenSvg(2400 , 7000, "FelsenSvg05.svg")
-  felsenSvg(1050 , 7000, "FelsenSvg06.svg")
+  felsenSvg(200, 6150, "svg/FelsenSvg01.svg")
+  felsenSvg(1400 , 6275, "svg/FelsenSvg02.svg")
+  felsenSvg(2900 , 6275, "svg/FelsenSvg03.svg")
+  felsenSvg(3550 , 7020, "svg/FelsenSvg04.svg")
+  felsenSvg(2400 , 7000, "svg/FelsenSvg05.svg")
+  felsenSvg(1050 , 7000, "svg/FelsenSvg06.svg")
 
-  unterwasserFelsenSvg(950, 4900, "UnterwasserFelsenBig.svg")
-  unterwasserFelsenSvg(1100, 5625, "UnterwasserFelsenBig.svg")
-  unterwasserFelsenSvg(1575, 5625, "UnterwasserFelsenBig.svg")
-  unterwasserFelsenSvg(2800, 4920, "UnterwasserFelsenSmall.svg")
-  unterwasserFelsenSvg(2300, 5625, "UnterwasserFelsenSmall.svg")
+  unterwasserFelsenSvg(950, 4900, "svg/UnterwasserFelsenBig.svg")
+  unterwasserFelsenSvg(1100, 5625, "svg/UnterwasserFelsenBig.svg")
+  unterwasserFelsenSvg(1575, 5625, "svg/UnterwasserFelsenBig.svg")
+  unterwasserFelsenSvg(2800, 4920, "svg/UnterwasserFelsenSmall.svg")
+  unterwasserFelsenSvg(2300, 5625, "svg/UnterwasserFelsenSmall.svg")
 
   for (let i = 0; i < 11; i++)
     setupGround(i);
@@ -261,7 +261,7 @@ blocks.push (new Block(world, {x: 1160, y: 2635, w: 15, h: 470,  image: lanceSol
  
 
 
-createFelsbrocken(3150, 6000, "FallingFelsen.svg");
+createFelsbrocken(3150, 6000, "svg/FallingFelsen.svg");
 
 
 // blocks.push (new Block(world, 

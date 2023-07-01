@@ -35,7 +35,7 @@
                     Matter.Composite.remove(world, [fallingFelsbrocken.body]);
                     fallingFelsbrocken.attributes.image = null;
                     // Erzeuge kleine Bälle an der Position des ursprünglichen Felsbrockens
-                    for (var i = 0; i < 10; i++) {
+                    for (var i = 0; i < 15; i++) {
                         var ball = new Ball(world,
                             { x: fallingFelsbrocken.body.position.x, y: fallingFelsbrocken.body.position.y, r: random(10,15), color: "#3A1B1D" },
                             { isStatic: false }
@@ -43,6 +43,7 @@
                         blocks.push(ball);
                         document.getElementById("gif").style.display = "block"
                         gifSound.play();
+                    //    fallingRockSound.play() 
                     }
                 }, 350);
             }

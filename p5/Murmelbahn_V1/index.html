@@ -17,6 +17,7 @@
   <script language="javascript" type="text/javascript" src="../classes/BlocksFromSVG.js"></script>
   <script language="javascript" type="text/javascript" src="../libraries/p5.sound.js"></script>
   <script language="javascript" type="text/javascript" src="js/grounds.js"></script>
+  <script language="javascript" type="text/javascript" src="js/soundSensor.js"></script>
   <script language="javascript" type="text/javascript" src="js/createPot.js"></script>
   <script language="javascript" type="text/javascript" src="js/createVase.js"></script>
   <script language="javascript" type="text/javascript" src="js/flashes.js"></script>
@@ -188,10 +189,10 @@
 
 @keyframes cloudAnimation1 {
       0% {
-        transform: translateX(2100px);
+        transform: translateX(-100px);
       }
       100% {
-        transform: translateX(29000px);
+        transform: translateX(2000px);
       }
     }
 
@@ -215,7 +216,7 @@
 
     @keyframes cloudAnimation4 {
       0% {
-        transform: translateX(1000pxpx);
+        transform: translateX(1000px);
       }
       100% {
         transform: translateX(3400px);
@@ -257,6 +258,233 @@
       }
     }
 
+
+
+/* Clouds Ebene 2 */ 
+#cloudEbene2-1 {
+  position: absolute;
+  top: 1150px;
+  right: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  opacity: 60%;
+  background: url('images/wolke.png') no-repeat;
+  background-size: contain;
+  animation: cloudAnimation1 60s linear infinite;
+  z-index: -1;
+}
+
+#cloudEbene2-2 {
+  position: absolute;
+  top: 1150px;
+  right: 0;
+  left: 0;
+  width: 400px;
+  height: 400px;
+  opacity: 60%;
+  background: url('images/wolke.png') no-repeat;
+  background-size: contain;
+  animation: cloudAnimation2 100s linear infinite;
+  z-index: -1;
+}
+
+#cloudEbene2-3 {
+  position: absolute;
+  top: 1150px;
+  right: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  opacity: 60%;
+  background: url('images/wolke.png') no-repeat;
+  background-size: contain;
+  animation: cloudAnimation3 120s linear infinite;
+  z-index: -1;
+}
+
+#cloudEbene2-4 {
+  position: absolute;
+  top: 1150px;
+  right: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  opacity: 60%;
+  background: url('images/wolke.png') no-repeat;
+  background-size: contain;
+  animation: cloudAnimation4 200s linear infinite;
+  z-index: -1;
+}
+    #cloudEbene2-5 {
+  position: absolute;
+  top: 1150px;
+  right: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  opacity: 60%;
+  background: url('images/wolke.png') no-repeat;
+  background-size: contain;
+  animation: cloudAnimation5 60s linear infinite;
+  z-index: -1;
+}
+
+#cloudEbene2-6 {
+  position: absolute;
+  top: 1150px;
+  right: 0;
+  left: 0;
+  width: 400px;
+  height: 400px;
+  opacity: 60%;
+  background: url('images/wolke.png') no-repeat;
+  background-size: contain;
+  animation: cloudAnimation6 100s linear infinite;
+  z-index: -1;
+}
+
+#cloudEbene2-7 {
+  position: absolute;
+  top: 1150px;
+  right: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  opacity: 60%;
+  background: url('images/wolke.png') no-repeat;
+  background-size: contain;
+  animation: cloudAnimation7 120s linear infinite;
+  z-index: -1;
+}
+
+#cloudEbene2-8 {
+  position: absolute;
+  top: 1150px;
+  right: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  opacity: 60%;
+  background: url('images/wolke.png') no-repeat;
+  background-size: contain;
+  animation: cloudAnimation8 200s linear infinite;
+  z-index: -1;
+}
+
+
+#cloudsEbene3-1 {
+      position: absolute;
+      top: 1850px;
+      right: 0;
+      left: 0;
+      width: 500px;
+      height: 500px;
+      opacity: 60%;
+      background: url('images/wolke.png') no-repeat;
+      background-size: contain;
+      animation: cloudAnimation1 60s linear infinite;
+      z-index: -1;
+    }
+
+    #cloudsEbene3-2 {
+      position: absolute;
+      top: 1850px;
+      right: 0;
+      left: 0;
+      width: 400px;
+      height: 400px;
+      opacity: 60%;
+      background: url('images/wolke.png') no-repeat;
+      background-size: contain;
+      animation: cloudAnimation2 100s linear infinite;
+      z-index: -1;
+    }
+
+    #cloudsEbene3-3 {
+      position: absolute;
+      top: 1850px;
+      right: 0;
+      left: 0;
+      width: 300px;
+      height: 300px;
+      opacity: 60%;
+      background: url('images/wolke.png') no-repeat;
+      background-size: contain;
+      animation: cloudAnimation3 120s linear infinite;
+      z-index: -1;
+    }
+
+    #cloudsEbene3-4 {
+      position: absolute;
+      top: 1850px;
+      right: 0;
+      left: 0;
+      width: 300px;
+      height: 300px;
+      opacity: 60%;
+      background: url('images/wolke.png') no-repeat;
+      background-size: contain;
+      animation: cloudAnimation4 200s linear infinite;
+      z-index: -1;
+    }
+    
+    #cloudsEbene3-5 {
+      position: absolute;
+      top: 1850px;
+      right: 0;
+      left: 0;
+      width: 500px;
+      height: 500px;
+      opacity: 60%;
+      background: url('images/wolke.png') no-repeat;
+      background-size: contain;
+      animation: cloudAnimation5 60s linear infinite;
+      z-index: -1;
+    }
+    #cloudsEbene3-6 {
+      position: absolute;
+      top: 1850px;
+      right: 0;
+      left: 0;
+      width: 400px;
+      height: 400px;
+      opacity: 60%;
+      background: url('images/wolke.png') no-repeat;
+      background-size: contain;
+      animation: cloudAnimation6 100s linear infinite;
+      z-index: -1;
+    }
+
+    #cloudsEbene3-7 {
+      position: absolute;
+      top: 1850px;
+      right: 0;
+      left: 0;
+      width: 300px;
+      height: 300px;
+      opacity: 60%;
+      background: url('images/wolke.png') no-repeat;
+      background-size: contain;
+      animation: cloudAnimation7 120s linear infinite;
+      z-index: -1;
+    }
+
+    #cloudsEbene3-8 {
+      position: absolute;
+      top: 1850px;
+      right: 0;
+      left: 0;
+      width: 300px;
+      height: 300px;
+      opacity: 60%;
+      background: url('images/wolke.png') no-repeat;
+      background-size: contain;
+      animation: cloudAnimation8 200s linear infinite;
+      z-index: -1;
+    }
+
+
  
   </style>
 
@@ -275,6 +503,22 @@
   <div class="cloud" id="cloud6"></div>
   <div class="cloud" id="cloud7"></div>
   <div class="cloud" id="cloud8"></div>
+  <div class="cloud" id="cloudEbene2-1"></div>
+  <div class="cloud" id="cloudEbene2-2"></div>
+  <div class="cloud" id="cloudEbene2-3"></div>
+  <div class="cloud" id="cloudEbene2-4"></div>
+  <div class="cloud" id="cloudEbene2-5"></div>
+  <div class="cloud" id="cloudEbene2-6"></div>
+  <div class="cloud" id="cloudEbene2-7"></div>
+  <div class="cloud" id="cloudEbene2-8"></div>
+  <div id="cloudsEbene3-1" class="cloud"></div>
+  <div id="cloudsEbene3-2" class="cloud"></div>
+  <div id="cloudsEbene3-3" class="cloud"></div>
+  <div id="cloudsEbene3-4" class="cloud"></div>
+  <div id="cloudsEbene3-5" class="cloud"></div>
+  <div id="cloudsEbene3-6" class="cloud"></div>
+  <div id="cloudsEbene3-7" class="cloud"></div>
+  <div id="cloudsEbene3-8" class="cloud"></div>
   <img src="./images/gif-new.gif" id="gif"></img>
   <img src="./images/gif-nymphe.gif" id="gif-nymphe"></img>
 

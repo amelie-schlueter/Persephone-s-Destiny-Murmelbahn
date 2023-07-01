@@ -3,7 +3,6 @@ const Runner = Matter.Runner;
 const Bodies = Matter.Bodies;
 const Events = Matter.Events;
 const World = Matter.World;
-Matter.use('matter-wrap'); // setup wrap coordinates plugin
 
 // the Matter engine to animate the world
 let engine;
@@ -71,6 +70,9 @@ let vasen = [];
 let fallingLanceSound; 
 let theEndSound;
 let granatapfelCrack; 
+let potCrack; 
+let womanTalking; 
+let fallingRockSound;
 
 
 let canvasElem;
@@ -128,6 +130,12 @@ function preload() {
     theEndSound.playMode('sustain');
     granatapfelCrack = loadSound('./Sounds/granatapfelCrack.mp3');
     granatapfelCrack.playMode('sustain');
+    potCrack = loadSound('./Sounds/potCrack.mp3');
+    potCrack.playMode('sustain');
+    womanTalking.playMode('sustain');
+    womanTalking = loadSound('./Sounds/womanTalking.mp3');
+    fallingRockSound.playMode('sustain');
+    fallingRockSound = loadSound('./Sounds/fallingRock.mp3');
 }
 
 function setup() {
@@ -187,8 +195,17 @@ blocks.push(new BlockCore(world, { x: dim.w - 1200, y: 5640, w: 500, h: 30}, { i
   blocks.push(baumstamm1,baumstamm2),
 
 
-  // Brunnen Stütze
-  blocks.push(new Block(world, { x: dim.w - 350, y: 3460, w: 20, h: 115 }, { isStatic: true }));
+    // Brunnen Stütze
+    blocks.push(new Block(world, {
+      x: dim.w - 350, y: 3460, w: 20, h: 115, isTriggered: false,
+      trigger: (block, ball) => {
+        console.log("Lance gefallen")
+        block.isTriggered = true;
+        Matter.Body.setStatic(fallingLance[2].body, true);
+        fallingLanceSound.play();
+      }
+    },
+      { isStatic: true }));
 
 
 
@@ -264,32 +281,25 @@ blocks.push (new Block(world, {x: 1160, y: 2635, w: 15, h: 470,  image: lanceSol
 createFelsbrocken(3150, 6000, "svg/FallingFelsen.svg");
 
 
-// blocks.push (new Block(world, 
-//   {x: dim.w /2  , y: 8800, w: dim.w, h: 470,  color: "white"
-//   },
-//   {isStatic: true}))
-
 blocks.push(createEndBlock(world,dim.w /2, 8800, dim.w, 470))
 blocks.push (new Block(world, {x: 200, y: 8700, w: dim.w, h: 200,  color: "white"},
   {isStatic: true, angle: PI / 4 } ))
 
-// Stütze für die erste Lance 
-// blocks.push(new Block(
-//   world,
-//   {x: dim.w / 2 + 505, y: 520, w: 20, h: 400, color: "white",
-//   trigger: (ball,block) => {
-//     Matter.Body.setStatic(fallingLance[0].body, true)
-//   }},
-//   {  isStatic: true , angle: PI /3}
-// ));
 
+ // Create Sound Sensor 
 
- 
+ // Woman Speeking 
+ blocks.push(
+  createSoundSensor(world, 2500, 2700, 100, 200, () => {
+    womanTalking.play(); // Aufruf von womanTalking.play() innerhalb der Trigger-Funktion
+  })
+);
+
 
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 100, y: 100, r: 60, image: granatapfelImg },
+    { x: 100, y: 6000, r: 60, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);
@@ -302,10 +312,10 @@ blocks.push (new Block(world, {x: 200, y: 8700, w: dim.w, h: 200,  color: "white
   Events.on(engine, 'collisionStart', function (event) {
     var pairs = event.pairs;
     pairs.forEach((pair, i) => {
-      if (pair.bodyA.label == 'Murmel') {
+      if (pair.bodyA.label == 'Murmel' ||pair.bodyA.label == "Lance") {
         pair.bodyA.plugin.block.collideWith(pair.bodyB.plugin.block)
       }
-      if (pair.bodyB.label == 'Murmel') {
+      if (pair.bodyB.label == 'Murmel' ||pair.bodyB.label == "Lance") {
         pair.bodyB.plugin.block.collideWith(pair.bodyA.plugin.block)
       }
     })

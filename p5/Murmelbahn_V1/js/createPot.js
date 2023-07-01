@@ -1,14 +1,24 @@
 
-    function createPot(world,x, y, w, h) {
+  function createPot(world,x, y, w, h) {
       return new Block(
         world,
-        {x: x, y: y, w: w, h: h, image: potImg,
+        {x: x, 
+        y: y, 
+        w: w, 
+        h: h, 
+        image: potImg, 
+        isTriggered: false,
         trigger: (ball, block) => {
-        Matter.Body.setStatic(fallingLance[0].body, true);
-        }},
+          if (!block.isTriggered) {  // Überprüfen, ob der Trigger bereits ausgelöst wurde
+            block.isTriggered = true; 
+            Matter.Body.setStatic(fallingLance[0].body, true);
+            fallingLanceSound.play(); 
+          }}},
         { isStatic: true }
       )
 }
+
+
 
 
 
@@ -43,6 +53,7 @@ function fallingPotSensor(world, x, y, w, h) {
               { isStatic: false }
             );
             blocks.push(ball);
+            potCrack.play()
           }
         }, 350);
       }

@@ -96,6 +96,7 @@ function setupGround(level){
                             startLuftblasen();
                             console.log("Gravity wurde geändert. Unterwasserwelt erreicht" , engine.world.gravity.y)
                             underwaterSound.play()
+                            womanTalking.stop()
                             bgMusic.stop();
                             console.log("Level 5 erreicht")
                             birdSinging.stop(); 

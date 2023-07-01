@@ -8,17 +8,14 @@ function createFallingLance(x, y, force) {
         h: 450,
         image: fallingLanceImg,
         isTriggered: false,  // Neue Eigenschaft für den Trigger-Status hinzufügen
-        trigger: (ball, block) => {
+        trigger: (fallingLance, block) => {
           if (!block.isTriggered) {  // Überprüfen, ob der Trigger bereits ausgelöst wurde
             block.isTriggered = true;  // Trigger-Status auf "true" setzen, um Mehrfachauslösung zu verhindern
             Matter.Body.setStatic(block.body, false);
             Matter.Body.applyForce(block.body, block.body.position, force);
-            setTimeout(() => {
-              fallingLanceSound.play();
-            }, 600);
           }
         }
       },
-      { isStatic: true }
+      { isStatic: true, label: "Lance"}
     ));
   }

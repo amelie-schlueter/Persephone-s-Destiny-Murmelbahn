@@ -55,8 +55,7 @@ function setupGround(level){
                         bgMusic.stop()
                         unterweltSound.stop()
                         clearInterval(fireballInterval);
-
-                        theEndSound.play();
+                        Matter.Composite.remove(world, [grounds[10].body]);
                         break; 
                       default:
                           console.log(level+ "1");
@@ -113,6 +112,7 @@ function setupGround(level){
                             case 9:
                               startFireballs();
                             break; 
+                            
                         default:
                             console.log(level);
                     }

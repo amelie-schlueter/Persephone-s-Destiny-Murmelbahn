@@ -257,7 +257,7 @@ blocks.push(new BlockCore(world, { x: dim.w - 1200, y: 5640, w: 500, h: 30}, { i
   felsenSvg(3550 , 7020, "svg/FelsenSvg04.svg")
   felsenSvg(2400 , 7000, "svg/FelsenSvg05.svg")
   felsenSvg(1110 , 6950, "svg/FelsenSvg07.svg")
-  createEndBlock(700 , 8500, "svg/theEndFloor.svg",endBlockImg)
+  createEndBlock(700 , 8600, "svg/theEndFloor.svg",endBlockImg)
 
   unterwasserFelsenSvg(950, 4900, "svg/UnterwasserFelsenBig.svg")
   unterwasserFelsenSvg(1100, 5625, "svg/UnterwasserFelsenBig.svg")
@@ -306,7 +306,7 @@ blocks.push(new BlockCore(world, { x: dim.w - 1200, y: 5640, w: 500, h: 30}, { i
   // create falling lance 
 createFallingLance(dim.w / 2 + 305,500, { x: 0.2, y: 0.0 })
 createFallingLance(dim.w -500,1190, { x: -0.2, y: 0.0 })
-createFallingLance(dim.w -750,3340, { x: 0.2, y: 0.0 })
+createFallingLance(dim.w -745,3340, { x: 0.2, y: 0.0 })
 
 // Lance des Soldaten 
 blocks.push (new Block(world, {x: 1160, y: 2635, w: 15, h: 470,  image: lanceSoldatImg},
@@ -335,7 +335,7 @@ createGranatapfel()
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 100, y: -100, r: 60, image: granatapfelImg },
+    { x: 100, y: 7000, r: 60, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);

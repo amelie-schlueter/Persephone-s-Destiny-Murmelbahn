@@ -26,7 +26,7 @@ function createEndBlock(x, y, svg, image) {
       Matter.Body.applyForce(granatapfelkaputt2.body, granatapfelkaputt2.body.position, { x: -0.01, y: -0.02 })
       Matter.Body.applyForce(granatapfelkaputt3.body, granatapfelkaputt3.body.position, { x: 0.01, y: -0.02 })
       blocks.push(granatapfelkaputt1, granatapfelkaputt2, granatapfelkaputt3);
-      for (var i = 0; i < 25; i++) {
+      for (var i = 0; i < 15; i++) {
         var ball = new Ball(world,
           { x: granatapfel.body.position.x, y: granatapfel.body.position.y, r: random(5, 10), color: "#F7931E" },
           { isStatic: false }

@@ -26,6 +26,7 @@ let arrows = [];
 let underwaterSensor = []; 
 let luftblasen = []; 
 let smallLuftblasenImg; 
+let fallingSchale;
 let mediumLuftblasenImg; 
 let largeLuftblasenImgLuftblasenImg; 
 let xLargeLuftblasenImg; 
@@ -73,6 +74,10 @@ let granatapfelCrack;
 let potCrack; 
 let womanTalking; 
 let fallingRockSound;
+let schaleImg;
+let endBlock;
+let endBlockImg; 
+let granatapfelKaputtImg; 
 
 
 let canvasElem;
@@ -101,6 +106,9 @@ function preload() {
   brunnenImg = loadImage('images/brunnenImg.png');
   fireballImg = loadImage('images/fireballImg.png');
   fallingFelsbrockenImg = loadImage('images/fallingFelsbrockenImg.png');
+  schaleImg = loadImage("images/schale.png")
+  endBlockImg = loadImage("images/theEndFloor.png")
+  granatapfelKaputtImg = loadImage("images/granatapfelKaputtImg.png")
   
 
     // load sound
@@ -132,10 +140,10 @@ function preload() {
     granatapfelCrack.playMode('sustain');
     potCrack = loadSound('./Sounds/potCrack.mp3');
     potCrack.playMode('sustain');
-    womanTalking.playMode('sustain');
     womanTalking = loadSound('./Sounds/womanTalking.mp3');
-    fallingRockSound.playMode('sustain');
-    fallingRockSound = loadSound('./Sounds/fallingRock.mp3');
+    womanTalking.playMode('sustain');
+    // fallingRockSound.playMode('sustain');
+    // fallingRockSound = loadSound('./Sounds/fallingRock.mp3');
 }
 
 function setup() {
@@ -221,7 +229,8 @@ blocks.push(new BlockCore(world, { x: dim.w - 1200, y: 5640, w: 500, h: 30}, { i
   felsenSvg(2900 , 6275, "svg/FelsenSvg03.svg")
   felsenSvg(3550 , 7020, "svg/FelsenSvg04.svg")
   felsenSvg(2400 , 7000, "svg/FelsenSvg05.svg")
-  felsenSvg(1050 , 7000, "svg/FelsenSvg06.svg")
+  felsenSvg(1110 , 6950, "svg/FelsenSvg07.svg")
+  createEndBlock(700 , 8500, "svg/theEndFloor.svg",endBlockImg)
 
   unterwasserFelsenSvg(950, 4900, "svg/UnterwasserFelsenBig.svg")
   unterwasserFelsenSvg(1100, 5625, "svg/UnterwasserFelsenBig.svg")
@@ -278,28 +287,28 @@ blocks.push (new Block(world, {x: 1160, y: 2635, w: 15, h: 470,  image: lanceSol
  
 
 
-createFelsbrocken(3150, 6000, "svg/FallingFelsen.svg");
+createFelsbrocken(3130, 6000, "svg/FallingFelsen.svg");
+blocks.push(createSchaleSvg(2676, 380, "svg/schaleSvg.svg", schaleImg))
+createGranatapfel()
 
 
-blocks.push(createEndBlock(world,dim.w /2, 8800, dim.w, 470))
-blocks.push (new Block(world, {x: 200, y: 8700, w: dim.w, h: 200,  color: "white"},
-  {isStatic: true, angle: PI / 4 } ))
+// blocks.push(createEndBlock(world,dim.w /2, 8800, dim.w, 470))
+// blocks.push (new Block(world, {x: 200, y: 8700, w: dim.w, h: 200,  color: "white"},
+//   {isStatic: true, angle: PI / 4 } ))
 
 
  // Create Sound Sensor 
 
  // Woman Speeking 
  blocks.push(
-  createSoundSensor(world, 2500, 2700, 100, 200, () => {
-    womanTalking.play(); // Aufruf von womanTalking.play() innerhalb der Trigger-Funktion
-  })
+  createSoundSensor(world, 2500, 2700, 100, 200)
 );
 
 
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 100, y: 6000, r: 60, image: granatapfelImg },
+    { x: 100, y: 7000, r: 60, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);
@@ -404,6 +413,7 @@ function draw() {
   fishes.forEach(block => block.draw());
   luftblasen.forEach(block => block.draw());
   vasen.forEach(block => block.draw());
+  
 
 
 

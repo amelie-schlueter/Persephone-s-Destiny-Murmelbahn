@@ -1,15 +1,15 @@
 function createFireball() {
   const fireballBack = new Ball(
     world,
-    { x: 300, y: 6850, s: 6, r: 20},
+    { x: 650, y: 6650, s: 6, r: 20},
     { frictionAir: 0.06, isStatic: true }
   );
 
   const fireballFront = new Ball(
     world,
     {
-      x: 300,
-      y: 6850,
+      x: 650,
+      y: 6650,
       s: 6,
       r: 20,
       trigger: (ball, block) => {

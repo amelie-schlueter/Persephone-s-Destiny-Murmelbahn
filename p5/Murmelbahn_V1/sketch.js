@@ -80,6 +80,13 @@ let endBlockImg;
 let granatapfelKaputtImg1; 
 let granatapfelKaputtImg2; 
 let granatapfelKaputtImg3; 
+let vaseKaputtImg1; 
+let vaseKaputtImg2; 
+let vaseKaputtImg3; 
+let vaseKaputtImg4; 
+let schaleKaputtImg1;
+let schaleKaputtImg2;
+let schaleKaputtImg3;
 
 
 let canvasElem;
@@ -113,7 +120,14 @@ function preload() {
   granatapfelKaputtImg1 = loadImage("images/granatapfelKaputtImg1.png")
   granatapfelKaputtImg2 = loadImage("images/granatapfelKaputtImg2.png")
   granatapfelKaputtImg3 = loadImage("images/granatapfelKaputtImg3.png")
-  
+  vaseKaputtImg1 = loadImage("images/vaseKaputtImg1.png")
+  vaseKaputtImg2 = loadImage("images/vaseKaputtImg2.png")
+  vaseKaputtImg3 = loadImage("images/vaseKaputtImg3.png")
+  vaseKaputtImg4 = loadImage("images/vaseKaputtImg4.png")
+  schaleKaputtImg1 = loadImage("images/schaleKaputtImg1.png")
+  schaleKaputtImg2 = loadImage("images/schaleKaputtImg2.png")
+  schaleKaputtImg3 = loadImage("images/schaleKaputtImg3.png")
+
 
     // load sound
     birdSinging = loadSound('./Sounds/bird-singing.mp3');
@@ -176,10 +190,19 @@ function setup() {
   // right
   blocks.push(new BlockCore(world, { x: dim.w + dim.d / 2, y: dim.h / 2, w: dim.d, h: dim.h, color: 'black' }, { isStatic: true }));
   // top
-  blocks.push(new BlockCore(world, { x: dim.w / 2, y: -dim.d / 2, w: dim.w, h: dim.d, color: 'black' }, { isStatic: true }));
+  // blocks.push(new BlockCore(world, { x: dim.w / 2, y: -dim.d / 2, w: dim.w, h: dim.d, color: 'black' }, { isStatic: true }));
   // bottom
   // blocks.push(new BlockCore(world, { x: dim.w / 2, y: dim.h + dim.d / 2, w: dim.w, h: dim.d, color: 'black' }, { isStatic: true }));
-  blocks.push(new BlockCore(world, { x: dim.w - 1350, y: 1275, w: 1000, h: 30}, { isStatic: true }));
+  blocks.push(new BlockCore(world, { x: dim.w - 1350, y: 1275, w: 1000, h: 30, isTriggered:false, 
+    trigger: (block, ball) => {
+      if (block.isTriggered) {
+      console.log("Lance gefallen")
+      block.isTriggered = true;
+      Matter.Body.setStatic(fallingLance[1].body, true);
+      fallingLanceSound.play();
+      }
+    }},
+     { isStatic: true }));
 
   
 // Wasserruine Platform
@@ -282,8 +305,8 @@ blocks.push(new BlockCore(world, { x: dim.w - 1200, y: 5640, w: 500, h: 30}, { i
 
   // create falling lance 
 createFallingLance(dim.w / 2 + 305,500, { x: 0.2, y: 0.0 })
-createFallingLance(dim.w -500,1200, { x: -0.2, y: 0.0 })
-createFallingLance(dim.w -750,3350, { x: 0.2, y: 0.0 })
+createFallingLance(dim.w -500,1190, { x: -0.2, y: 0.0 })
+createFallingLance(dim.w -750,3340, { x: 0.2, y: 0.0 })
 
 // Lance des Soldaten 
 blocks.push (new Block(world, {x: 1160, y: 2635, w: 15, h: 470,  image: lanceSoldatImg},
@@ -312,7 +335,7 @@ createGranatapfel()
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 100, y: 100, r: 60, image: granatapfelImg },
+    { x: 100, y: -100, r: 60, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);
@@ -336,6 +359,7 @@ createGranatapfel()
 
   // run the engine
   Runner.run(engine);
+  grounds[0].options.isSensor = true; 
 
 
 

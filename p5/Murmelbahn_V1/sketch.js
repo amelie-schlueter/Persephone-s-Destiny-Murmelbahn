@@ -77,7 +77,9 @@ let fallingRockSound;
 let schaleImg;
 let endBlock;
 let endBlockImg; 
-let granatapfelKaputtImg; 
+let granatapfelKaputtImg1; 
+let granatapfelKaputtImg2; 
+let granatapfelKaputtImg3; 
 
 
 let canvasElem;
@@ -108,7 +110,9 @@ function preload() {
   fallingFelsbrockenImg = loadImage('images/fallingFelsbrockenImg.png');
   schaleImg = loadImage("images/schale.png")
   endBlockImg = loadImage("images/theEndFloor.png")
-  granatapfelKaputtImg = loadImage("images/granatapfelKaputtImg.png")
+  granatapfelKaputtImg1 = loadImage("images/granatapfelKaputtImg1.png")
+  granatapfelKaputtImg2 = loadImage("images/granatapfelKaputtImg2.png")
+  granatapfelKaputtImg3 = loadImage("images/granatapfelKaputtImg3.png")
   
 
     // load sound
@@ -308,7 +312,7 @@ createGranatapfel()
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 100, y: 7000, r: 60, image: granatapfelImg },
+    { x: 100, y: 100, r: 60, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);

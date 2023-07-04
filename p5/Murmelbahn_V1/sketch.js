@@ -335,7 +335,7 @@ createGranatapfel()
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 100, y: 7000, r: 60, image: granatapfelImg },
+    { x: 100, y: 6000, r: 60, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);

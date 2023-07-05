@@ -167,6 +167,7 @@ function preload() {
 function setup() {
   let canvas = createCanvas(windowWidth, windowHeight);
   canvas.parent('thecanvas');
+  bgMusic.play()
 
   // Das ist nötig für den 'Endless Canvas'
   canvasElem = document.getElementById('thecanvas');
@@ -245,7 +246,7 @@ blocks.push(new BlockCore(world, { x: dim.w - 1200, y: 5640, w: 500, h: 30}, { i
 
 
   // Pot Example
-  pots.push(createPot(world,2675, 525, 150, 230));
+  pots.push(createPot(world,2875, 525, 150, 230));
   pots.push(fallingPotSensor(world,790, 1240, 150, 230));
   vasen.push(createVase(world,790, 1040, 150, 230));
 
@@ -270,7 +271,6 @@ blocks.push(new BlockCore(world, { x: dim.w - 1200, y: 5640, w: 500, h: 30}, { i
 
  
 
-  bgMusic.play()
   
   // create moving Pillar 
   movingPillars.push(new Block(
@@ -304,9 +304,13 @@ blocks.push(new BlockCore(world, { x: dim.w - 1200, y: 5640, w: 500, h: 30}, { i
 
 
   // create falling lance 
-createFallingLance(dim.w / 2 + 305,500, { x: 0.2, y: 0.0 })
+createFallingLance(2100 + 305,450, { x: 0.2, y: 0.0 })
 createFallingLance(dim.w -500,1190, { x: -0.2, y: 0.0 })
 createFallingLance(dim.w -745,3340, { x: 0.2, y: 0.0 })
+
+for (i=0; i<5; i++) {
+  createFallingLance(1450 + (i*200), 450, { x: 0.4, y: 0.0 })
+}
 
 // Lance des Soldaten 
 blocks.push (new Block(world, {x: 1160, y: 2635, w: 15, h: 470,  image: lanceSoldatImg},
@@ -315,7 +319,7 @@ blocks.push (new Block(world, {x: 1160, y: 2635, w: 15, h: 470,  image: lanceSol
 
 
 createFelsbrocken(3130, 6000, "svg/FallingFelsen.svg");
-blocks.push(createSchaleSvg(2676, 380, "svg/schaleSvg.svg", schaleImg))
+blocks.push(createSchaleSvg(2876, 380, "svg/schaleSvg.svg", schaleImg))
 createGranatapfel()
 
 
@@ -335,7 +339,7 @@ createGranatapfel()
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 100, y: 6000, r: 60, image: granatapfelImg },
+    { x: 100, y: 100, r: 60, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);

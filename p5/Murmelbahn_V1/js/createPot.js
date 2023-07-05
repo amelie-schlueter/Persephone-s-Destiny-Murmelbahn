@@ -12,6 +12,11 @@
           if (!block.isTriggered) {  // Überprüfen, ob der Trigger bereits ausgelöst wurde
             block.isTriggered = true; 
             Matter.Body.setStatic(fallingLance[0].body, true);
+            Matter.Body.setStatic(fallingLance[3].body, true);
+            Matter.Body.setStatic(fallingLance[4].body, true);
+            Matter.Body.setStatic(fallingLance[5].body, true);
+            Matter.Body.setStatic(fallingLance[6].body, true);
+            Matter.Body.setStatic(fallingLance[7].body, true);
             fallingLanceSound.play(); 
           }}},
         { isStatic: true }

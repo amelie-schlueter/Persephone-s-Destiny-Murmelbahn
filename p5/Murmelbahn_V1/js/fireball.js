@@ -36,7 +36,7 @@ function createFireball() {
 // Generate Random Force for Fireballs
 function getRandomForceForFireballs() {
   // Generiere zufällige Werte für die x- und y-Komponenten der Kraft
-  const randomX = random(0.3, 1.2);
+  const randomX = random(0.3, 1.4);
   const randomY = random(-0.05, -0.1);
   return { x: randomX, y: randomY };
 }

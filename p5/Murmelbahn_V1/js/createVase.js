@@ -79,7 +79,7 @@ function createSchaleSvg(x, y, svg, image) {
 function createGranatapfel() {
   for (var i = 0; i < 10; i++) {
     var ball = new Ball(world,
-        { x: 2676, y: 325, r: random(5,15), color: "#F7931E",
+        { x: 2876, y: 325, r: random(5,15), color: "#F7931E",
       trigger: (ball,block) => {
        
       }},

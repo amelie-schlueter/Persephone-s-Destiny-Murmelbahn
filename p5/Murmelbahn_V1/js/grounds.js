@@ -54,6 +54,7 @@ function setupGround(level){
                         granatapfel.attributes.image = granatapfelImgNeg;
                         bgMusic.stop()
                         unterweltSound.stop()
+                        clearInterval(fishInterval);
                         clearInterval(fireballInterval);
                         Matter.Composite.remove(world, [grounds[10].body]);
                         break; 

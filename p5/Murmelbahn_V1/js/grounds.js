@@ -29,7 +29,7 @@ function setupGround(level){
                           console.log("Level 4 erreicht")
                           break;
                     case 6: 
-                    forceBall = {x: 0.5, y: -0.15 }
+                    forceBall = {x: 0.4, y: -0.15 }
                     startFirstFishes();
                     bubbleSound.play()
                     console.log("lvl6")

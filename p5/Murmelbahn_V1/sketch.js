@@ -304,9 +304,9 @@ blocks.push(new BlockCore(world, { x: dim.w - 1200, y: 5640, w: 500, h: 30}, { i
 
 
   // create falling lance 
-createFallingLance(2100 + 305,450, { x: 0.2, y: 0.0 })
-createFallingLance(dim.w -500,1190, { x: -0.2, y: 0.0 })
-createFallingLance(dim.w -745,3340, { x: 0.2, y: 0.0 })
+createFallingLance(2100 + 300,450, { x: 0.2, y: 0.0 })
+createFallingLance(dim.w -500,1150, { x: -0.2, y: 0.0 })
+createFallingLance(dim.w -750,3340, { x: 0.2, y: 0.0 })
 
 for (i=0; i<5; i++) {
   createFallingLance(1450 + (i*200), 450, { x: 0.4, y: 0.0 })
@@ -339,7 +339,7 @@ createGranatapfel()
 
   // the ball has a label and can react on collisions
   granatapfel = new Ball(world,
-    { x: 100, y: 100, r: 60, image: granatapfelImg },
+    { x: 100, y: -100, r: 60, image: granatapfelImg },
     { label: "Murmel", density: 0.001, restitution: 0.4, frictionAir: 0.0, isStatic: true }
   );
   blocks.push(granatapfel);
@@ -491,8 +491,6 @@ function draw() {
 
 
 }
-
-
 
 
 
